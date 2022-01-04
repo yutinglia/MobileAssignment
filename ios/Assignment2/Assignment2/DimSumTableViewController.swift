@@ -16,15 +16,11 @@ class DimSumTableViewController: UITableViewController {
         getAndShowDimSumData();
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return dimSums.count;
     }
 
@@ -33,6 +29,7 @@ class DimSumTableViewController: UITableViewController {
         let dimSum = self.dimSums[indexPath.row];
         var cellContent = cell.defaultContentConfiguration();
         cellContent.text = dimSum.name;
+        cell.contentConfiguration = cellContent;
         return cell;
     }
     
