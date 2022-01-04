@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C42A5E2C2784F7820069DEF0 /* DimSumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A5E2B2784F7820069DEF0 /* DimSumTableViewController.swift */; };
+		C42A5E312784FB780069DEF0 /* DimSumContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A5E302784FB780069DEF0 /* DimSumContact.swift */; };
 		C434DE56278245B6003F8B4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE55278245B6003F8B4B /* AppDelegate.swift */; };
 		C434DE58278245B6003F8B4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE57278245B6003F8B4B /* SceneDelegate.swift */; };
 		C434DE5A278245B6003F8B4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE59278245B6003F8B4B /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C42A5E2B2784F7820069DEF0 /* DimSumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimSumTableViewController.swift; sourceTree = "<group>"; };
+		C42A5E302784FB780069DEF0 /* DimSumContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimSumContact.swift; sourceTree = "<group>"; };
 		C434DE52278245B6003F8B4B /* Assignment2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C434DE55278245B6003F8B4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C434DE57278245B6003F8B4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				C434DE63278245B7003F8B4B /* LaunchScreen.storyboard */,
 				C434DE66278245B7003F8B4B /* Info.plist */,
 				C434DE5E278245B6003F8B4B /* Assignment2.xcdatamodeld */,
+				C42A5E2B2784F7820069DEF0 /* DimSumTableViewController.swift */,
+				C42A5E302784FB780069DEF0 /* DimSumContact.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -262,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C434DE5A278245B6003F8B4B /* ViewController.swift in Sources */,
+				C42A5E2C2784F7820069DEF0 /* DimSumTableViewController.swift in Sources */,
 				C434DE56278245B6003F8B4B /* AppDelegate.swift in Sources */,
+				C42A5E312784FB780069DEF0 /* DimSumContact.swift in Sources */,
 				C434DE58278245B6003F8B4B /* SceneDelegate.swift in Sources */,
 				C434DE60278245B6003F8B4B /* Assignment2.xcdatamodeld in Sources */,
 			);
