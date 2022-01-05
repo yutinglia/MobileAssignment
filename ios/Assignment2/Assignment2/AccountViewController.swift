@@ -8,22 +8,27 @@
 import UIKit
 
 class AccountViewController: UIViewController {
+    
+    var account : String = "";
+    var password : String = "";
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(account == "1" && password == "1"){
+            print("ok");
+        }else{
+            // login fail
+            print("not ok");
+            let alert = UIAlertController(title: "Login Error", message: "Login Fail", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "OK", style: .default, handler: {
+                _ in
+                self.navigationController?.popViewController(animated: true);
+            })
+            alert.addAction(alertAction);
+            present(alert, animated: true, completion: nil)
+        }
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

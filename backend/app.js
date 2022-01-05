@@ -5,7 +5,7 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/dim_sum_app_db').then(console.log("db ok")).catch(err => console.log(err));
 
-var indexRouter = require('./routes/index');
+var dimSumRouter = require('./routes/dimsum');
 
 var app = express();
 
@@ -15,6 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/dimsum', indexRouter);
+app.use('/api/dimsum', dimSumRouter);
 
 module.exports = app;

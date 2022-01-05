@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Account : Codable{
+    var account: String;
+    var password: String;
+    var email: String;
+    var phone: String;
+}
