@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct AccessToken : Codable{
+struct LoginInfo : Codable{
+    var account: String;
+    var email: String;
+    var phone: String;
     var token: String;
 }

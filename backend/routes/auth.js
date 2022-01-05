@@ -6,11 +6,17 @@ const Account = require('../model/Account')
 router.post('/', async function (req, res, next) {
   try {
     const { ac, pwd } = req.body;
-    const accounts = await Account.find({ account: ac, password: pwd });
-    if (accounts.length === 0) {
-      res.json({ status: 1, err: "Account not found!" });
+    const account = await Account.findOne({ account: ac, password: pwd });
+    if (!account) {
+      // login fail
+      res.json({ account: "0", email: "0", phone: "0", token: "0" });
     } else {
-      res.json({ status: 1, token: "i am token" });
+      res.json({
+        account: ac,
+        email: account.email,
+        phone: account.phone,
+        token: "i am token"
+      });
     }
   } catch (err) {
     console.log(err);

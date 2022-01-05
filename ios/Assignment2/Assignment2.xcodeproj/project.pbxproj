@@ -22,6 +22,7 @@
 		C4EB90CC27863F7A00C20D4E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */; };
 		C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CD2786429500C20D4E /* AccountViewController.swift */; };
 		C4EB90D127864B5F00C20D4E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D027864B5F00C20D4E /* Account.swift */; };
+		C4EB90D32786540700C20D4E /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D22786540700C20D4E /* LoginInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4EB90CD2786429500C20D4E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C4EB90D027864B5F00C20D4E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		C4EB90D22786540700C20D4E /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,7 @@
 		C434DE54278245B6003F8B4B /* Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
-				C4EB90CF27864AEE00C20D4E /* DBModel */,
+				C4EB90CF27864AEE00C20D4E /* Model */,
 				C434DE55278245B6003F8B4B /* AppDelegate.swift */,
 				C434DE57278245B6003F8B4B /* SceneDelegate.swift */,
 				C434DE59278245B6003F8B4B /* ViewController.swift */,
@@ -144,13 +146,14 @@
 			path = Assignment2UITests;
 			sourceTree = "<group>";
 		};
-		C4EB90CF27864AEE00C20D4E /* DBModel */ = {
+		C4EB90CF27864AEE00C20D4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C42A5E302784FB780069DEF0 /* DimSum.swift */,
 				C4EB90D027864B5F00C20D4E /* Account.swift */,
+				C4EB90D22786540700C20D4E /* LoginInfo.swift */,
 			);
-			path = DBModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +296,7 @@
 				C42A5E312784FB780069DEF0 /* DimSum.swift in Sources */,
 				C434DE58278245B6003F8B4B /* SceneDelegate.swift in Sources */,
 				C434DE60278245B6003F8B4B /* Assignment2.xcdatamodeld in Sources */,
+				C4EB90D32786540700C20D4E /* LoginInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
