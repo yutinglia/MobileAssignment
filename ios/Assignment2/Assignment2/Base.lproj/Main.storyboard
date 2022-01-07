@@ -18,7 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="liZ-Cq-YEp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="jme-Bq-Bo5"/>
+                    <tabBarItem key="tabBarItem" title="Map" selectedImage="map" catalog="system" id="jme-Bq-Bo5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4A-wW-GO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,7 +28,7 @@
         <scene sceneID="Ydp-hY-MVR">
             <objects>
                 <navigationController id="1HV-cV-pW8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" id="3di-zC-NPP"/>
+                    <tabBarItem key="tabBarItem" title="Account" selectedImage="person" catalog="system" id="3di-zC-NPP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zjn-td-i6C">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="1698" y="1522"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="arB-E7-VOJ">
             <objects>
-                <viewController id="HaF-as-WMf" sceneMemberID="viewController">
+                <viewController id="HaF-as-WMf" customClass="RegisterViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7PE-1v-MXr">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,6 +194,9 @@
                                 <rect key="frame" x="20" y="397" width="388" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Register"/>
+                                <connections>
+                                    <action selector="btnRegClick:" destination="HaF-as-WMf" eventType="touchUpInside" id="CVu-nu-pCJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VGw-fe-HvG"/>
@@ -223,6 +226,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gq1-h0-Ast"/>
+                    <connections>
+                        <outlet property="tfConfPassword" destination="5zR-SX-1TK" id="pHJ-bB-o8q"/>
+                        <outlet property="tfEmail" destination="ia2-O9-L26" id="tVo-8c-5NS"/>
+                        <outlet property="tfPassword" destination="yJt-TP-I7a" id="pMJ-Ln-Jga"/>
+                        <outlet property="tfPhone" destination="lBW-LK-KwB" id="w7w-cd-tS9"/>
+                        <outlet property="tfUserName" destination="gFQ-4x-LgC" id="bcn-dH-MkV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcN-6U-SAl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -270,7 +280,7 @@
                             <outlet property="delegate" destination="v9L-f3-Pgx" id="2b9-Bp-osJ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Dim Sum" id="51n-vz-NHC"/>
+                    <tabBarItem key="tabBarItem" title="Dim Sum" selectedImage="book" catalog="system" id="51n-vz-NHC"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="dkC-hz-Qwq">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -301,6 +311,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="map" catalog="system" width="128" height="110"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

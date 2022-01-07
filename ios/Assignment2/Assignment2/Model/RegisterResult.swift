@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct RegisterResult : Codable{
+    var status: Int;
+    var msg: String;
+}

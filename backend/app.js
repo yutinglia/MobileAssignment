@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost:27017/dim_sum_app_db').then(console.log("d
 
 var authRouter = require('./routes/auth');
 var dimSumRouter = require('./routes/dimsum');
+var accountRouter = require('./routes/account');
 
 var app = express();
 
@@ -18,5 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/auth', authRouter);
 app.use('/api/dimsum', dimSumRouter);
+app.use('/api/account', accountRouter);
 
 module.exports = app;

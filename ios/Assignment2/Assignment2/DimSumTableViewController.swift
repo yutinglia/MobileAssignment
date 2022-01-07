@@ -34,27 +34,14 @@ class DimSumTableViewController: UITableViewController {
     }
     
     func getAndShowDimSumData(){
-        if let url = URL(string:"http://localhost:3000/api/dimsum"){
-            var urlReq = URLRequest(url: url)
-            urlReq.httpMethod = "GET";
-            let task = URLSession.shared.dataTask(with: urlReq, completionHandler: {
-                data, res, err in
-                guard let data = data else{
-                    return;
-                }
-                self.dimSums.removeAll();
-                let decoder = JSONDecoder();
-                if let dimSums = try? decoder.decode([DimSum].self, from: data){
-                    self.dimSums = dimSums;
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData();
-                    }
-                }else{
-                    return;
-                }
-            })
-            task.resume();
-        }
+        apiGet(path: "dimsum", callback: {
+            (dimSums:[DimSum]?) in
+            guard let dimSums = dimSums else { print("???"); return; }
+            self.dimSums = dimSums;
+            DispatchQueue.main.async {
+                self.tableView.reloadData();
+            }
+        })
     }
 
 }

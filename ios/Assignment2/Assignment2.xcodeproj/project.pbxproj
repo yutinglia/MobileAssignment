@@ -19,6 +19,11 @@
 		C434DE70278245B7003F8B4B /* Assignment2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE6F278245B7003F8B4B /* Assignment2Tests.swift */; };
 		C434DE7A278245B7003F8B4B /* Assignment2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE79278245B7003F8B4B /* Assignment2UITests.swift */; };
 		C434DE7C278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE7B278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift */; };
+		C476686F2788D97F00338B63 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476686E2788D97F00338B63 /* RegisterViewController.swift */; };
+		C47668712788E7A200338B63 /* RegisterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47668702788E7A200338B63 /* RegisterResult.swift */; };
+		C47668742788E9A500338B63 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47668732788E9A500338B63 /* AlertHelper.swift */; };
+		C47668762788F13300338B63 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47668752788F13300338B63 /* Config.swift */; };
+		C47668782788F7EB00338B63 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47668772788F7EB00338B63 /* ApiHelper.swift */; };
 		C4EB90CC27863F7A00C20D4E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */; };
 		C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CD2786429500C20D4E /* AccountViewController.swift */; };
 		C4EB90D127864B5F00C20D4E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D027864B5F00C20D4E /* Account.swift */; };
@@ -59,6 +64,11 @@
 		C434DE75278245B7003F8B4B /* Assignment2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C434DE79278245B7003F8B4B /* Assignment2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2UITests.swift; sourceTree = "<group>"; };
 		C434DE7B278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C476686E2788D97F00338B63 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C47668702788E7A200338B63 /* RegisterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResult.swift; sourceTree = "<group>"; };
+		C47668732788E9A500338B63 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		C47668752788F13300338B63 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		C47668772788F7EB00338B63 /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4EB90CD2786429500C20D4E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C4EB90D027864B5F00C20D4E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -113,6 +123,7 @@
 		C434DE54278245B6003F8B4B /* Assignment2 */ = {
 			isa = PBXGroup;
 			children = (
+				C47668722788E96400338B63 /* Helper */,
 				C4EB90CF27864AEE00C20D4E /* Model */,
 				C434DE55278245B6003F8B4B /* AppDelegate.swift */,
 				C434DE57278245B6003F8B4B /* SceneDelegate.swift */,
@@ -125,6 +136,8 @@
 				C42A5E2B2784F7820069DEF0 /* DimSumTableViewController.swift */,
 				C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */,
 				C4EB90CD2786429500C20D4E /* AccountViewController.swift */,
+				C476686E2788D97F00338B63 /* RegisterViewController.swift */,
+				C47668752788F13300338B63 /* Config.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -146,12 +159,22 @@
 			path = Assignment2UITests;
 			sourceTree = "<group>";
 		};
+		C47668722788E96400338B63 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C47668732788E9A500338B63 /* AlertHelper.swift */,
+				C47668772788F7EB00338B63 /* ApiHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		C4EB90CF27864AEE00C20D4E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C42A5E302784FB780069DEF0 /* DimSum.swift */,
 				C4EB90D027864B5F00C20D4E /* Account.swift */,
 				C4EB90D22786540700C20D4E /* LoginInfo.swift */,
+				C47668702788E7A200338B63 /* RegisterResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,11 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47668742788E9A500338B63 /* AlertHelper.swift in Sources */,
 				C4EB90CC27863F7A00C20D4E /* LoginViewController.swift in Sources */,
+				C476686F2788D97F00338B63 /* RegisterViewController.swift in Sources */,
+				C47668762788F13300338B63 /* Config.swift in Sources */,
 				C434DE5A278245B6003F8B4B /* ViewController.swift in Sources */,
+				C47668712788E7A200338B63 /* RegisterResult.swift in Sources */,
 				C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */,
 				C42A5E2C2784F7820069DEF0 /* DimSumTableViewController.swift in Sources */,
 				C434DE56278245B6003F8B4B /* AppDelegate.swift in Sources */,
+				C47668782788F7EB00338B63 /* ApiHelper.swift in Sources */,
 				C4EB90D127864B5F00C20D4E /* Account.swift in Sources */,
 				C42A5E312784FB780069DEF0 /* DimSum.swift in Sources */,
 				C434DE58278245B6003F8B4B /* SceneDelegate.swift in Sources */,

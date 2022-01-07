@@ -8,22 +8,48 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
+    
+    @IBOutlet weak var tfUserName: UITextField!
+    @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var tfPhone: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var tfConfPassword: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    @IBAction func btnRegClick(_ sender: Any) {
+        let ac = tfUserName.text!;
+        let email = tfEmail.text!;
+        let phone = tfPhone.text!;
+        let pwd = tfPassword.text!;
+        let cpwd = tfConfPassword.text!;
+        if(pwd != cpwd){
+            showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
+            return;
+        }
+        let body = "ac=\(ac)&pwd=\(pwd)&email=\(email)&phone=\(phone)";
+        apiPost(apiName: "account", body: body, callback: {
+            (result:RegisterResult?) in
+            guard let result = result else { print("???"); return; }
+            if(result.status == 0){
+                // register success
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
+                        self.navigationController?.popViewController(animated: true);
+                    });
+                }
+            }else{
+                // fail
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Oops", msg: result.msg, callback: nil);
+                }
+            }
+        });
+    } // end btnRegClick
+    
+    
 }
