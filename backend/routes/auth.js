@@ -9,7 +9,8 @@ var config = require("../config");
 router.post('/', async function (req, res, next) {
   try {
     const { ac, pwd } = req.body;
-    const account = await Account.findOne({ account: ac, password: pwd });
+    const pwdHash = crypto.createHash('sha256').update(pwd).digest('hex');
+    const account = await Account.findOne({ account: ac, password: pwdHash });
     if (!account) {
       // login fail
       res.json({ account: "0", email: "0", phone: "0", token: "0" });

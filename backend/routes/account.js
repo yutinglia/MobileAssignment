@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Account = require('../model/Account')
+var crypto = require('crypto');
 
 // create account
 router.post('/', async function (req, res, next) {
@@ -16,7 +17,8 @@ router.post('/', async function (req, res, next) {
             res.json({ status: 1, msg: "Account exist" });
             return;
         }
-        const account = new Account({ account: ac, password: pwd, email, phone });
+        const pwdHash = crypto.createHash('sha256').update(pwd).digest('hex');
+        const account = new Account({ account: ac, password: pwdHash, email, phone });
         const newAccount = await account.save();
         console.log(newAccount + " registered")
         res.json({ status: 0, msg: "Account register success" });
