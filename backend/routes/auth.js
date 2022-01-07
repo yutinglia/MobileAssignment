@@ -10,8 +10,8 @@ var crypto = require('crypto');
 router.post('/', async function (req, res, next) {
   try {
     const { ac, pwd } = req.body;
-    const pwdHash = crypto.createHash('sha256').update(pwd).digest('hex');
-    const account = await Account.findOne({ account: ac, password: pwdHash });
+    const hash = crypto.createHash('sha256').update("HAHA" + pwd + "LOL" + ac).digest('hex');
+    const account = await Account.findOne({ account: ac, password: hash });
     if (!account) {
       // login fail
       res.json({ account: "0", email: "0", phone: "0", token: "0" });

@@ -17,8 +17,8 @@ router.post('/', async function (req, res, next) {
             res.json({ status: 1, msg: "Account exist" });
             return;
         }
-        const pwdHash = crypto.createHash('sha256').update(pwd).digest('hex');
-        const account = new Account({ account: ac, password: pwdHash, email, phone });
+        const hash = crypto.createHash('sha256').update("HAHA" + pwd + "LOL" + ac).digest('hex');
+        const account = new Account({ account: ac, password: hash, email, phone });
         const newAccount = await account.save();
         console.log(newAccount + " registered")
         res.json({ status: 0, msg: "Account register success" });
