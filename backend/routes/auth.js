@@ -4,6 +4,7 @@ const Account = require('../model/Account');
 var jwt = require('jsonwebtoken');
 var { v4: uuidv4 } = require('uuid');
 var config = require("../config");
+var crypto = require('crypto');
 
 // get access token
 router.post('/', async function (req, res, next) {
