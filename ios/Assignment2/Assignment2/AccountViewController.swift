@@ -19,7 +19,10 @@ class AccountViewController: UIViewController {
     
     // login
     func getAndCheckAccessToken(){
-        let body = "ac=\(account)&pwd=\(password)";
+        var hash = "LOL" + account + "HAHA" + password;
+        hash = hash.sha256;
+        password = "";
+        let body = "ac=\(account)&pwd=\(hash)";
         apiPost(apiName: "auth", body: body, callback: {
             (result:LoginInfo?) in
             guard let result = result else { print("???"); return; }

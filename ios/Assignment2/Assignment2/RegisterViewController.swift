@@ -25,13 +25,17 @@ class RegisterViewController: UIViewController {
         let ac = tfUserName.text!;
         let email = tfEmail.text!;
         let phone = tfPhone.text!;
-        let pwd = tfPassword.text!;
-        let cpwd = tfConfPassword.text!;
+        var pwd = tfPassword.text!;
+        var cpwd = tfConfPassword.text!;
         if(pwd != cpwd){
             showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
             return;
         }
-        let body = "ac=\(ac)&pwd=\(pwd)&email=\(email)&phone=\(phone)";
+        var hash = "LOL" + ac + "HAHA" + pwd;
+        hash = hash.sha256;
+        pwd = "";
+        cpwd = "";
+        let body = "ac=\(ac)&pwd=\(hash)&email=\(email)&phone=\(phone)";
         apiPost(apiName: "account", body: body, callback: {
             (result:RegisterResult?) in
             guard let result = result else { print("???"); return; }
