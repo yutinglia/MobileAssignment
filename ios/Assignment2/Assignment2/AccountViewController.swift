@@ -19,25 +19,18 @@ class AccountViewController: UIViewController {
     
     // login
     func getAndCheckAccessToken(){
-        var hash = "LOL" + account + "HAHA" + password;
-        hash = hash.sha256;
-        password = "";
-        let body = "ac=\(account)&pwd=\(hash)";
-        apiPost(apiName: "auth", body: body, callback: {
-            (result:LoginInfo?) in
-            guard let result = result else { print("???"); return; }
-            if(result.token == "0"){
-                // login fail
-                DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Login Error", msg: "Login Fail", callback: {
-                        self.navigationController?.popViewController(animated: true);
-                    });
-                }
-            }else{
-                // login ok
-                print(result);
+        let result = getLoginInfo(account: account, password: password);
+        if(result.token == "0"){
+            // login fail
+            DispatchQueue.main.async{
+                showOkAlert(view: self, title: "Login Error", msg: "Login Fail", callback: {
+                    self.navigationController?.popViewController(animated: true);
+                });
             }
-        });
+        }else{
+            // login ok
+            print(result);
+        }
     }
     
 }

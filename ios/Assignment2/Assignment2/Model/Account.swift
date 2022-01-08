@@ -13,3 +13,21 @@ struct Account : Codable{
     var email: String;
     var phone: String;
 }
+
+struct RegisterResult : Codable{
+    var status: Int;
+    var msg: String;
+}
+
+func createAccount(ac:String, pwd:String, email:String, phone:String) -> RegisterResult{
+    var registerResut = RegisterResult(status: 1, msg: "Unknow Error");
+    var hash = "LOL" + ac + "HAHA" + pwd;
+    hash = hash.sha256;
+    let body = "ac=\(ac)&pwd=\(hash)&email=\(email)&phone=\(phone)";
+    apiPost(apiName: "account", body: body, callback: {
+        (result:RegisterResult?) in
+        guard let result = result else { print("???"); return; }
+        registerResut = result;
+    });
+    return registerResut;
+}

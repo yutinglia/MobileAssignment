@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class KeychainHelper{
+    func saveLoginInfo(loginInfo: LoginInfo){
+        
+    }
+}

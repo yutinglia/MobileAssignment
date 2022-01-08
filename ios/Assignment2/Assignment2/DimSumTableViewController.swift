@@ -34,14 +34,10 @@ class DimSumTableViewController: UITableViewController {
     }
     
     func getAndShowDimSumData(){
-        apiGet(path: "dimsum", callback: {
-            (dimSums:[DimSum]?) in
-            guard let dimSums = dimSums else { print("???"); return; }
-            self.dimSums = dimSums;
-            DispatchQueue.main.async {
-                self.tableView.reloadData();
-            }
-        })
+        self.dimSums = getAllDimSum();
+        DispatchQueue.main.async {
+            self.tableView.reloadData();
+        }
     }
 
 }
