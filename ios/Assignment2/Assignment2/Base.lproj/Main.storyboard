@@ -72,7 +72,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                 <connections>
-                                    <action selector="btnLoginClick:" destination="ziu-Z2-qJe" eventType="touchUpInside" id="86G-J6-jVh"/>
                                     <segue destination="VN9-N6-ydl" kind="show" id="nLk-QL-Hnq"/>
                                 </connections>
                             </button>
@@ -138,14 +137,20 @@
         <!--Account View Controller-->
         <scene sceneID="pxq-Z2-g1N">
             <objects>
-                <viewController id="VN9-N6-ydl" customClass="AccountViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountVC" id="VN9-N6-ydl" customClass="AccountViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="79U-cT-Vt8">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="QoP-a4-GLQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5ue-Fv-tH1"/>
+                    <navigationItem key="navigationItem" id="5ue-Fv-tH1">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="eQk-hQ-rvP">
+                            <connections>
+                                <action selector="btnLogoutClick:" destination="VN9-N6-ydl" id="rkJ-Ly-MVw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhH-Nu-feX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,12 +14,14 @@ class AccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAndCheckAccessToken();
+        let keychain = KeychainHelper();
+        if(!keychain.isAccessTokenExist()){
+            // login
+            getLoginInfo(account: account, password: password, handler: loginInfoHandler);
+        }
     }
     
-    // login
-    func getAndCheckAccessToken(){
-        let result = getLoginInfo(account: account, password: password);
+    func loginInfoHandler(result:LoginInfo){
         if(result.token == "0"){
             // login fail
             DispatchQueue.main.async{
@@ -29,8 +31,35 @@ class AccountViewController: UIViewController {
             }
         }else{
             // login ok
-            print(result);
+            let keychain = KeychainHelper();
+            if(keychain.saveAccessToken(loginInfo: result)){
+                // let token = keychain.retrieveAccessToken(account: result.account);
+                // guard let token = token else {print("retrieve token fail"); return;}
+                // print(token);
+                DispatchQueue.main.async{
+                    self.navigationItem.setHidesBackButton(true, animated: true);
+                }
+            }else{
+                print("stored token fail");
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Login Error", msg: "Stored Access Token Fail", callback: {
+                        self.logout();
+                        self.navigationController?.popViewController(animated: true);
+                    });
+                }
+            }
         }
     }
+    
+    @IBAction func btnLogoutClick(_ sender: Any) {
+        logout();
+        self.navigationController?.popViewController(animated: true);
+    }
+    
+    func logout(){
+        let keychain = KeychainHelper();
+        keychain.clearAccessToken();
+    }
+    
     
 }

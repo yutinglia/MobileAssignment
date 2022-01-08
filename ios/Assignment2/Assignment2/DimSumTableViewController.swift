@@ -13,7 +13,7 @@ class DimSumTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAndShowDimSumData();
+        getAllDimSum(handler: dimSumsHandler);
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,11 +33,11 @@ class DimSumTableViewController: UITableViewController {
         return cell;
     }
     
-    func getAndShowDimSumData(){
-        self.dimSums = getAllDimSum();
+    func dimSumsHandler(dimSims:[DimSum]){
+        self.dimSums = dimSims;
         DispatchQueue.main.async {
             self.tableView.reloadData();
-        }
+        };
     }
 
 }

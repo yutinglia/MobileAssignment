@@ -19,15 +19,21 @@ struct RegisterResult : Codable{
     var msg: String;
 }
 
-func createAccount(ac:String, pwd:String, email:String, phone:String) -> RegisterResult{
-    var registerResut = RegisterResult(status: 1, msg: "Unknow Error");
+func createAccount(ac:String,
+                   pwd:String,
+                   email:String,
+                   phone:String,
+                   handler: @escaping (RegisterResult) -> () ){
     var hash = "LOL" + ac + "HAHA" + pwd;
     hash = hash.sha256;
     let body = "ac=\(ac)&pwd=\(hash)&email=\(email)&phone=\(phone)";
     apiPost(apiName: "account", body: body, callback: {
         (result:RegisterResult?) in
-        guard let result = result else { print("???"); return; }
-        registerResut = result;
+        guard let result = result else {
+            print("???");
+            handler(RegisterResult(status: 1, msg: "Unknow Error"));
+            return;
+        }
+        handler(result);
     });
-    return registerResut;
 }

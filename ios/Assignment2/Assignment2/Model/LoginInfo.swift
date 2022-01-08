@@ -9,20 +9,21 @@ import Foundation
 
 struct LoginInfo : Codable{
     var account: String;
-    var email: String;
-    var phone: String;
     var token: String;
 }
 
-func getLoginInfo(account:String, password:String) -> LoginInfo{
+func getLoginInfo(account:String, password:String,
+                  handler: @escaping (LoginInfo) -> () ){
     var hash = "LOL" + account + "HAHA" + password;
     hash = hash.sha256;
     let body = "ac=\(account)&pwd=\(hash)";
-    var loginInfo: LoginInfo = LoginInfo(account: "0", email: "0", phone: "0", token: "0");
     apiPost(apiName: "auth", body: body, callback: {
         (result:LoginInfo?) in
-        guard let result = result else { print("???"); return; }
-        loginInfo = result;
+        guard let result = result else {
+            print("???");
+            handler(LoginInfo(account: "0", token: "0"));
+            return;
+        }
+        handler(result);
     });
-    return loginInfo;
 }

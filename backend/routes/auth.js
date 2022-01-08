@@ -6,6 +6,34 @@ var { v4: uuidv4 } = require('uuid');
 var config = require("../config");
 var crypto = require('crypto');
 
+// refresh token
+router.get('/', async function (req, res, next) {
+  try {
+    let token = req.headers.authorization;
+    if (!token) {
+      res.status(500).send("oof");
+      return;
+    }
+    console.log(token);
+    jwt.verify(token, config.JWT_SECRET_KEY, function (err, decoded) {
+      if (err) {
+        res.status(401).json({ status: 1, err: "Unauthorized!" });
+      } else {
+        const uuid = uuidv4();
+        const { ac } = decoded;
+        const token = jwt.sign({ ac, uuid }, config.JWT_SECRET_KEY, { expiresIn: config.JWT_EXPIRES_TIME });
+        res.json({
+          account: ac,
+          token: token
+        });
+      }
+    })
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("oof");
+  }
+});
+
 // get access token
 router.post('/', async function (req, res, next) {
   try {
@@ -14,14 +42,12 @@ router.post('/', async function (req, res, next) {
     const account = await Account.findOne({ account: ac, password: hash });
     if (!account) {
       // login fail
-      res.json({ account: "0", email: "0", phone: "0", token: "0" });
+      res.json({ account: "0", token: "0" });
     } else {
       const uuid = uuidv4();
       const token = jwt.sign({ ac, uuid }, config.JWT_SECRET_KEY, { expiresIn: config.JWT_EXPIRES_TIME });
       res.json({
         account: ac,
-        email: account.email,
-        phone: account.phone,
         token: token
       });
     }

@@ -11,12 +11,14 @@ struct DimSum : Codable{
     var name: String;
 }
 
-func getAllDimSum() -> [DimSum]{
-    var dimSums = [DimSum]();
+func getAllDimSum(handler: @escaping ([DimSum]) -> () ){
     apiGet(path: "dimsum", callback: {
         (result:[DimSum]?) in
-        guard let result = result else { print("???"); return; }
-        dimSums = result;
+        guard let result = result else {
+            print("???");
+            handler([DimSum]());
+            return;
+        }
+        handler(result);
     })
-    return dimSums;
 }

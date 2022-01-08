@@ -15,12 +15,26 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func btnLoginClick(_ sender: Any) {
-        
+    override func viewDidDisappear(_ animated: Bool) {
+        tfUserName.text = "";
+        tfPwd.text = "";
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let keychain = KeychainHelper();
+        if (keychain.isAccessTokenExist()){
+            print("logined");
+            DispatchQueue.main.async{
+                let sb = UIStoryboard(name: "Main", bundle: nil);
+                let vc = sb.instantiateViewController(withIdentifier: "AccountVC");
+                self.navigationController?.show(vc, sender: self);
+            }
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let des = segue.destination as? AccountViewController {
+            print("login prepare");
             des.account = tfUserName.text!;
             des.password = tfPwd.text!;
         }

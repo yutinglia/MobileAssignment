@@ -31,7 +31,10 @@ class RegisterViewController: UIViewController {
             showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
             return;
         }
-        let result = createAccount(ac: ac, pwd: pwd, email: email, phone: phone)
+        createAccount(ac: ac, pwd: pwd, email: email, phone: phone, handler: registerResultHandler);
+    }
+    
+    func registerResultHandler(result: RegisterResult){
         if(result.status == 0){
             // register success
             DispatchQueue.main.async{
@@ -45,7 +48,6 @@ class RegisterViewController: UIViewController {
                 showOkAlert(view: self, title: "Oops", msg: result.msg, callback: nil);
             }
         }
-    } // end btnRegClick
-    
+    }
     
 }
