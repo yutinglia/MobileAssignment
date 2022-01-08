@@ -18,6 +18,15 @@ class AccountViewController: UIViewController {
         if(!keychain.isAccessTokenExist()){
             // login
             getLoginInfo(account: account, password: password, handler: loginInfoHandler);
+        }else{
+            verifyTokenAndRefreshToken(handler: {
+                (result:LoginInfo) in
+                if(result.token == "0"){
+                    showOkAlert(view: self, title: "Expired", msg: "Login has expird, please login again.", callback: {
+                        self.navigationController?.popViewController(animated: true);
+                    });
+                }
+            })
         }
     }
     

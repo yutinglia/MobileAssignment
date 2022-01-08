@@ -28,6 +28,16 @@ func getLoginInfo(account:String, password:String,
     });
 }
 
-func verifyTokenAndRefreshToken(){
-    
+func verifyTokenAndRefreshToken(handler: @escaping (LoginInfo) -> () = {_ in} ){
+    let keychain = KeychainHelper();
+    apiGetWithToken(path: "auth", callback: {
+        (result:LoginInfo?) in
+        guard let result = result else {
+            print("???");
+            handler(LoginInfo(account: "0", token: "0"));
+            return;
+        }
+        _ = keychain.saveAccessToken(loginInfo: result);
+        handler(result);
+    })
 }

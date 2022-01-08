@@ -73,7 +73,7 @@ func apiGetWithToken<T: Decodable>(path: String, callback cb: @escaping (T?)->()
             print("unauth");
             return;
         }
-        urlReq.setValue("Basic \(token.data(using: .utf8)!)", forHTTPHeaderField: "Authorization");
+        urlReq.setValue(token, forHTTPHeaderField: "Authorization");
         let task = URLSession.shared.dataTask(with: urlReq, completionHandler: {
             resultData, res, err in
             guard let resultData = resultData else{
@@ -110,7 +110,7 @@ func apiPostWithToken<T: Decodable>(apiName: String, body bodyStr: String, callb
             print("unauth");
             return;
         }
-        urlReq.setValue("Basic \(token.data(using: .utf8)!)", forHTTPHeaderField: "Authorization");
+        urlReq.setValue(token, forHTTPHeaderField: "Authorization");
         let task = URLSession.shared.uploadTask(with: urlReq, from: data, completionHandler: {
             resultData, res, err in
             guard let resultData = resultData else{

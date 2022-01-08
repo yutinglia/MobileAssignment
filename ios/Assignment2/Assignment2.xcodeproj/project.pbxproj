@@ -28,7 +28,7 @@
 		C4EB90CC27863F7A00C20D4E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */; };
 		C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CD2786429500C20D4E /* AccountViewController.swift */; };
 		C4EB90D127864B5F00C20D4E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D027864B5F00C20D4E /* Account.swift */; };
-		C4EB90D32786540700C20D4E /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D22786540700C20D4E /* LoginInfo.swift */; };
+		C4EB90D32786540700C20D4E /* LoginInfoAkaToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D22786540700C20D4E /* LoginInfoAkaToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,7 @@
 		C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4EB90CD2786429500C20D4E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C4EB90D027864B5F00C20D4E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		C4EB90D22786540700C20D4E /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
+		C4EB90D22786540700C20D4E /* LoginInfoAkaToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfoAkaToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,7 @@
 			children = (
 				C42A5E302784FB780069DEF0 /* DimSum.swift */,
 				C4EB90D027864B5F00C20D4E /* Account.swift */,
-				C4EB90D22786540700C20D4E /* LoginInfo.swift */,
+				C4EB90D22786540700C20D4E /* LoginInfoAkaToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,7 +343,7 @@
 				C42A5E312784FB780069DEF0 /* DimSum.swift in Sources */,
 				C434DE58278245B6003F8B4B /* SceneDelegate.swift in Sources */,
 				C434DE60278245B6003F8B4B /* Assignment2.xcdatamodeld in Sources */,
-				C4EB90D32786540700C20D4E /* LoginInfo.swift in Sources */,
+				C4EB90D32786540700C20D4E /* LoginInfoAkaToken.swift in Sources */,
 				C45900E82789C7DF0080E98A /* KeychainHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +523,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WS95QYJT64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Assignment2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -550,6 +551,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WS95QYJT64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Assignment2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

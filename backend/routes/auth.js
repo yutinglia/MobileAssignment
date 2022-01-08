@@ -14,10 +14,12 @@ router.get('/', async function (req, res, next) {
       res.status(500).send("oof");
       return;
     }
-    console.log(token);
     jwt.verify(token, config.JWT_SECRET_KEY, function (err, decoded) {
       if (err) {
-        res.status(401).json({ status: 1, err: "Unauthorized!" });
+        res.json({
+          account: "0",
+          token: "0"
+        });
       } else {
         const uuid = uuidv4();
         const { ac } = decoded;
