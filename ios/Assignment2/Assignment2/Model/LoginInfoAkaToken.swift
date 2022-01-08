@@ -27,3 +27,7 @@ func getLoginInfo(account:String, password:String,
         handler(result);
     });
 }
+
+func verifyTokenAndRefreshToken(){
+    
+}
