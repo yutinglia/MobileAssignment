@@ -7,7 +7,7 @@ var crypto = require('crypto');
 router.post('/', async function (req, res, next) {
     try {
         const { ac, pwd, email, phone } = req.body;
-        if (!ac && !pwd && !email && !phone) {
+        if (!ac || !pwd || !email || !phone) {
             res.json({ status: 1, msg: "Information is not complete" });
             return;
         }

@@ -1,11 +1,29 @@
 var express = require('express');
 var router = express.Router();
 const DimSum = require('../model/DimSum')
+const multer = require('multer')
 
-router.post('/', async function (req, res, next) {
+var upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, `${__dirname}/../public/dimSumImg/`);
+    },
+    filename: function (req, file, cb) {
+      var name = `${req.body.name}.jpg`;
+      cb(null, name);
+    }
+  })
+})
+
+router.post('/', upload.single('img'), async function (req, res, next) {
   try {
-    const { name, imgURL, history, ingredients } = req.body;
-    const siuMai = new DimSum({ name, imgURL, history, ingredients });
+    const { name, info, history, ingredients } = req.body;
+    if (!req.file || !name || !info || !history || !ingredients) {
+      res.status(500).send("oof");
+      return;
+    }
+    const arr = [];
+    const siuMai = new DimSum({ name, info, history, ingredients, arr });
     const dimSum = await siuMai.save();
     res.json(dimSum);
   } catch (err) {
