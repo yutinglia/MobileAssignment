@@ -11,7 +11,11 @@ class AccountViewController: UIViewController {
     
     var account : String = "";
     var password : String = "";
-
+    
+    @IBOutlet weak var lblAc: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let keychain = KeychainHelper();
@@ -25,8 +29,19 @@ class AccountViewController: UIViewController {
                     showOkAlert(view: self, title: "Expired", msg: "Login has expird, please login again.", callback: {
                         self.navigationController?.popViewController(animated: true);
                     });
+                }else{
+                    self.password = "";
+                    getCurrentAccountInfo(handler: self.accountInfoHandler);
                 }
             })
+        }
+    }
+    
+    func accountInfoHandler(result:Account){
+        DispatchQueue.main.async{
+            self.lblAc.text = "Account: \(result.account)";
+            self.lblEmail.text = "Email: \(result.email)";
+            self.lblPhone.text = "Phone: \(result.phone)";
         }
     }
     
@@ -40,6 +55,7 @@ class AccountViewController: UIViewController {
             }
         }else{
             // login ok
+            self.password = "";
             let keychain = KeychainHelper();
             if(keychain.saveAccessToken(loginInfo: result)){
                 // let token = keychain.retrieveAccessToken(account: result.account);
@@ -57,6 +73,7 @@ class AccountViewController: UIViewController {
                     });
                 }
             }
+            getCurrentAccountInfo(handler: self.accountInfoHandler);
         }
     }
     

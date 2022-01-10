@@ -38,6 +38,15 @@ class DimSumTableViewController: UITableViewController {
         return cell;
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let des = segue.destination as? DimSumDetailViewController {
+            guard let index = self.tableView.indexPathForSelectedRow else{
+                return;
+            }
+            des.dimSim = dimSums[index.row];
+        }
+    }
+    
     func dimSumsHandler(dimSims:[DimSum]){
         self.dimSums = dimSims;
         DispatchQueue.main.async {

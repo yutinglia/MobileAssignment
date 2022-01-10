@@ -19,6 +19,18 @@ struct RegisterResult : Codable{
     var msg: String;
 }
 
+func getCurrentAccountInfo(handler: @escaping (Account) -> () ){
+    apiGetWithToken(path: "user/account", callback: {
+        (result:Account?) in
+        guard let result = result else {
+            print("???");
+            handler(Account(account: "", password: "", email: "", phone: ""));
+            return;
+        }
+        handler(result);
+    })
+}
+
 func createAccount(ac:String,
                    pwd:String,
                    email:String,

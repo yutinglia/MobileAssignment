@@ -9,6 +9,7 @@ var authRouter = require('./routes/auth');
 var dimSumRouter = require('./routes/dimsum');
 var dimSumWithTokenRouter = require('./routes/t_dimsum');
 var accountRouter = require('./routes/account');
+var accountWithTokenRouter = require('./routes/t_account');
 
 var check_token = require('./check_token');
 
@@ -27,5 +28,6 @@ app.use('/api/account', accountRouter);
 app.use(check_token);
 
 app.use('/api/user/dimsum', dimSumWithTokenRouter);
+app.use('/api/user/account', accountWithTokenRouter);
 
 module.exports = app;

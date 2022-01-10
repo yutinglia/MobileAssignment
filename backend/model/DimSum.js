@@ -5,7 +5,8 @@ const dimSumSchema = new mongoose.Schema({
     info: String,
     history: String,
     ingredients: String,
-    tutorial: [String]
+    uploader: String,
+    tutorial: String
 });
 
 module.exports = mongoose.model('dim_sums', dimSumSchema);

@@ -20,6 +20,7 @@
 		C434DE7A278245B7003F8B4B /* Assignment2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE79278245B7003F8B4B /* Assignment2UITests.swift */; };
 		C434DE7C278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE7B278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift */; };
 		C4584C24278C9B1D0056FF02 /* DimSumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */; };
+		C4584C27278CC1080056FF02 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4584C26278CC1080056FF02 /* Download.swift */; };
 		C45900E82789C7DF0080E98A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45900E72789C7DF0080E98A /* KeychainHelper.swift */; };
 		C46D8FAD278B8A7E00B12289 /* AddDimSumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */; };
 		C46D8FB0278BA76100B12289 /* AppendString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D8FAF278BA76100B12289 /* AppendString.swift */; };
@@ -69,6 +70,7 @@
 		C434DE79278245B7003F8B4B /* Assignment2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2UITests.swift; sourceTree = "<group>"; };
 		C434DE7B278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimSumDetailViewController.swift; sourceTree = "<group>"; };
+		C4584C26278CC1080056FF02 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		C45900E72789C7DF0080E98A /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDimSumViewController.swift; sourceTree = "<group>"; };
 		C46D8FAF278BA76100B12289 /* AppendString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendString.swift; sourceTree = "<group>"; };
@@ -170,6 +172,14 @@
 			path = Assignment2UITests;
 			sourceTree = "<group>";
 		};
+		C4584C25278CC0EB0056FF02 /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				C4584C26278CC1080056FF02 /* Download.swift */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
 		C46D8FAE278BA74800B12289 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +201,7 @@
 		C476687B27890C6600338B63 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C4584C25278CC0EB0056FF02 /* UIImageView */,
 				C46D8FAE278BA74800B12289 /* Data */,
 				C476687C27890C7900338B63 /* String */,
 			);
@@ -355,6 +366,7 @@
 				C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */,
 				C42A5E2C2784F7820069DEF0 /* DimSumTableViewController.swift in Sources */,
 				C434DE56278245B6003F8B4B /* AppDelegate.swift in Sources */,
+				C4584C27278CC1080056FF02 /* Download.swift in Sources */,
 				C47668782788F7EB00338B63 /* ApiHelper.swift in Sources */,
 				C476687E27890C8800338B63 /* SHA256.swift in Sources */,
 				C4EB90D127864B5F00C20D4E /* Account.swift in Sources */,

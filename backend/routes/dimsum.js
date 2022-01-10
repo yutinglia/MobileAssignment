@@ -12,4 +12,13 @@ router.get('/', async function (req, res, next) {
   }
 });
 
+router.get('/:name/img', async function (req, res, next) {
+  try {
+    res.download(`${__dirname}/../public/dimSumImg/${req.params.name}.jpg`);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("oof");
+  }
+});
+
 module.exports = router;
