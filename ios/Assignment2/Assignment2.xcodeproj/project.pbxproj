@@ -19,6 +19,7 @@
 		C434DE70278245B7003F8B4B /* Assignment2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE6F278245B7003F8B4B /* Assignment2Tests.swift */; };
 		C434DE7A278245B7003F8B4B /* Assignment2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE79278245B7003F8B4B /* Assignment2UITests.swift */; };
 		C434DE7C278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434DE7B278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift */; };
+		C4584C24278C9B1D0056FF02 /* DimSumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */; };
 		C45900E82789C7DF0080E98A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45900E72789C7DF0080E98A /* KeychainHelper.swift */; };
 		C46D8FAD278B8A7E00B12289 /* AddDimSumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */; };
 		C46D8FB0278BA76100B12289 /* AppendString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D8FAF278BA76100B12289 /* AppendString.swift */; };
@@ -67,6 +68,7 @@
 		C434DE75278245B7003F8B4B /* Assignment2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assignment2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C434DE79278245B7003F8B4B /* Assignment2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2UITests.swift; sourceTree = "<group>"; };
 		C434DE7B278245B7003F8B4B /* Assignment2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimSumDetailViewController.swift; sourceTree = "<group>"; };
 		C45900E72789C7DF0080E98A /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDimSumViewController.swift; sourceTree = "<group>"; };
 		C46D8FAF278BA76100B12289 /* AppendString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendString.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				C476686E2788D97F00338B63 /* RegisterViewController.swift */,
 				C47668752788F13300338B63 /* Config.swift */,
 				C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */,
+				C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				C434DE60278245B6003F8B4B /* Assignment2.xcdatamodeld in Sources */,
 				C4EB90D32786540700C20D4E /* LoginInfoAkaToken.swift in Sources */,
 				C46D8FB0278BA76100B12289 /* AppendString.swift in Sources */,
+				C4584C24278C9B1D0056FF02 /* DimSumDetailViewController.swift in Sources */,
 				C45900E82789C7DF0080E98A /* KeychainHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
