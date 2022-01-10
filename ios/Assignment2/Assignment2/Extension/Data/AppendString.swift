@@ -1,0 +1,8 @@
+//
+//  AppendString.swift
+//  Assignment2
+//
+//  Created by YuTing Lai on 10/1/2022.
+//
+
+import Foundation
