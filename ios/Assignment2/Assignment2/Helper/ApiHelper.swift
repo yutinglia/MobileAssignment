@@ -131,4 +131,58 @@ func apiPostWithToken<T: Decodable>(apiName: String, body bodyStr: String, callb
     }
 } // end apiPostWithToken
 
-
+// post multipard/form-data req with token and pass backend result
+func apiPostFormDataWithToken<T: Decodable>(apiName: String, parameters: [String: String], data: [String: Data], callback cb: @escaping (T?)->()){
+    if let url = URL(string:"\(BACKEND_SERVER_URL)/api/\(apiName)"){
+        var urlReq = URLRequest(url: url)
+        urlReq.httpMethod = "POST";
+        let boundary = "Boundary+\(arc4random())\(arc4random())";
+        var body = Data();
+        
+        // make form data
+        urlReq.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type");
+        
+        for (key, value) in parameters {
+            body.appendString(string: "--\(boundary)\r\n");
+            body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n");
+            body.appendString(string: "\(value)\r\n");
+        }
+        
+        for (key, value) in data {
+            body.appendString(string: "--\(boundary)\r\n");
+            body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(arc4random())\"\r\n");
+            body.appendString(string: "Content-Type: image/jpeg\r\n\r\n");
+            body.append(value);
+            body.appendString(string: "\r\n");
+        }
+        
+        body.appendString(string: "--\(boundary)--\r\n")
+        
+        // set token to header
+        let keychain = KeychainHelper();
+        let token = keychain.retrieveAccessToken();
+        guard let token = token else {
+            print("unauth");
+            return;
+        }
+        urlReq.setValue(token, forHTTPHeaderField: "Authorization");
+        let task = URLSession.shared.uploadTask(with: urlReq, from: body, completionHandler: {
+            resultData, res, err in
+            guard let resultData = resultData else{
+                return;
+            }
+            if let err = err {
+                print(err);
+            }
+            // decode json
+            let decoder = JSONDecoder();
+            guard let result = try? decoder.decode(T.self, from: resultData) else {
+                return;
+            }
+            // pass result
+            cb(result);
+        });
+        task.resume();
+        
+    }
+} // end apiPostFormDataWithToken

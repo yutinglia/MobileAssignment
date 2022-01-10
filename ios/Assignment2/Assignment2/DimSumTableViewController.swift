@@ -8,11 +8,16 @@
 import UIKit
 
 class DimSumTableViewController: UITableViewController {
-    
+
     var dimSums = [DimSum]();
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
+        refreshData(self);
+    }
+    
+    @objc func refreshData(_ sender: AnyObject){
         getAllDimSum(handler: dimSumsHandler);
     }
 
@@ -37,6 +42,7 @@ class DimSumTableViewController: UITableViewController {
         self.dimSums = dimSims;
         DispatchQueue.main.async {
             self.tableView.reloadData();
+            self.tableView.refreshControl?.endRefreshing();
         };
     }
 

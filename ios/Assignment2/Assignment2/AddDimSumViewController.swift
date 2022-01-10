@@ -22,7 +22,24 @@ class AddDimSumViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func btnAddClick(_ sender: Any) {
-        
+        addDimSum(name: tfName.text!,
+                  info: tvInfo.text!,
+                  history: tvHist.text!,
+                  ingredients: tvIngr.text!,
+                  img: (imgView.image?.jpegData(compressionQuality: 0.8))!, handler: {
+            result in
+            if(result.status == 0){
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Success", msg: "Dim Sum Added", callback: {
+                        self.dismiss(animated: true, completion: nil);
+                    });
+                }
+            }else{
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Fail", msg: "Please try again", callback: nil);
+                }
+            }
+        })
     }
     
     @IBAction func btnCancelClick(_ sender: Any) {
