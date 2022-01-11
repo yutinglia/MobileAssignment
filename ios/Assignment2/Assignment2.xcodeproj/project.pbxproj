@@ -29,6 +29,11 @@
 		C47668762788F13300338B63 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47668752788F13300338B63 /* Config.swift */; };
 		C47668782788F7EB00338B63 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47668772788F7EB00338B63 /* ApiHelper.swift */; };
 		C476687E27890C8800338B63 /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476687D27890C8800338B63 /* SHA256.swift */; };
+		C47D57B4278DDEFD0075CF22 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47D57B3278DDEFD0075CF22 /* EditAccountViewController.swift */; };
+		C47D57B6278DDF0B0075CF22 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47D57B5278DDF0B0075CF22 /* ResetPasswordViewController.swift */; };
+		C47D57B8278DF91E0075CF22 /* AddStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47D57B7278DF91E0075CF22 /* AddStoreViewController.swift */; };
+		C47D57BA278E15840075CF22 /* DimSumMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47D57B9278E15840075CF22 /* DimSumMapViewController.swift */; };
+		C47D57BC278E25AA0075CF22 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47D57BB278E25AA0075CF22 /* Store.swift */; };
 		C4EB90CC27863F7A00C20D4E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */; };
 		C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90CD2786429500C20D4E /* AccountViewController.swift */; };
 		C4EB90D127864B5F00C20D4E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EB90D027864B5F00C20D4E /* Account.swift */; };
@@ -79,6 +84,11 @@
 		C47668752788F13300338B63 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		C47668772788F7EB00338B63 /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		C476687D27890C8800338B63 /* SHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		C47D57B3278DDEFD0075CF22 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
+		C47D57B5278DDF0B0075CF22 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		C47D57B7278DF91E0075CF22 /* AddStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoreViewController.swift; sourceTree = "<group>"; };
+		C47D57B9278E15840075CF22 /* DimSumMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimSumMapViewController.swift; sourceTree = "<group>"; };
+		C47D57BB278E25AA0075CF22 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C4EB90CB27863F7A00C20D4E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4EB90CD2786429500C20D4E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		C4EB90D027864B5F00C20D4E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -151,6 +161,10 @@
 				C47668752788F13300338B63 /* Config.swift */,
 				C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */,
 				C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */,
+				C47D57B3278DDEFD0075CF22 /* EditAccountViewController.swift */,
+				C47D57B5278DDF0B0075CF22 /* ResetPasswordViewController.swift */,
+				C47D57B7278DF91E0075CF22 /* AddStoreViewController.swift */,
+				C47D57B9278E15840075CF22 /* DimSumMapViewController.swift */,
 			);
 			path = Assignment2;
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 				C42A5E302784FB780069DEF0 /* DimSum.swift */,
 				C4EB90D027864B5F00C20D4E /* Account.swift */,
 				C4EB90D22786540700C20D4E /* LoginInfoAkaToken.swift */,
+				C47D57BB278E25AA0075CF22 /* Store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,12 +375,17 @@
 				C47668742788E9A500338B63 /* AlertHelper.swift in Sources */,
 				C4EB90CC27863F7A00C20D4E /* LoginViewController.swift in Sources */,
 				C46D8FAD278B8A7E00B12289 /* AddDimSumViewController.swift in Sources */,
+				C47D57B6278DDF0B0075CF22 /* ResetPasswordViewController.swift in Sources */,
+				C47D57B4278DDEFD0075CF22 /* EditAccountViewController.swift in Sources */,
+				C47D57BC278E25AA0075CF22 /* Store.swift in Sources */,
 				C476686F2788D97F00338B63 /* RegisterViewController.swift in Sources */,
 				C47668762788F13300338B63 /* Config.swift in Sources */,
 				C434DE5A278245B6003F8B4B /* ViewController.swift in Sources */,
 				C4EB90CE2786429500C20D4E /* AccountViewController.swift in Sources */,
 				C42A5E2C2784F7820069DEF0 /* DimSumTableViewController.swift in Sources */,
 				C434DE56278245B6003F8B4B /* AppDelegate.swift in Sources */,
+				C47D57B8278DF91E0075CF22 /* AddStoreViewController.swift in Sources */,
+				C47D57BA278E15840075CF22 /* DimSumMapViewController.swift in Sources */,
 				C4584C27278CC1080056FF02 /* Download.swift in Sources */,
 				C47668782788F7EB00338B63 /* ApiHelper.swift in Sources */,
 				C476687E27890C8800338B63 /* SHA256.swift in Sources */,

@@ -8,22 +8,36 @@
 import UIKit
 
 class ResetPasswordViewController: UIViewController {
+    
+    var account = "";
 
+    @IBOutlet weak var tfOldPwd: UITextField!
+    @IBOutlet weak var tfNewPwd: UITextField!
+    @IBOutlet weak var tfConfNewPwd: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func btnConfirmClick(_ sender: Any) {
+        if(tfNewPwd.text! != tfConfNewPwd.text!){
+            showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
+            return;
+        }
+        resetPassword(ac: account, pwd: tfNewPwd.text!, opwd: tfOldPwd.text!, handler: {
+            result in
+            if(result.status == 0){
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
+                        self.dismiss(animated: true, completion: nil);
+                    });
+                }
+            }else{
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Fail", msg: result.msg, callback: nil);
+                }
+            }
+        })
     }
-    */
-
+    
 }

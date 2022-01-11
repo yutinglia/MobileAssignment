@@ -8,22 +8,38 @@
 import UIKit
 
 class EditAccountViewController: UIViewController {
-
+    
+    var preEmail = "";
+    var prePhone = "";
+    var account = "";
+    
+    @IBOutlet weak var tfAccount: UITextField!
+    @IBOutlet weak var tfEmail: UITextField!
+    @IBOutlet weak var tfPhone: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tfAccount.text = account;
+        tfEmail.text = preEmail;
+        tfPhone.text = prePhone;
+    }
 
-        // Do any additional setup after loading the view.
+    
+    @IBAction func btnConfirmClick(_ sender: Any) {
+        editAccount(email: tfEmail.text!, phone: tfPhone.text!, handler: {
+            result in
+            if(result.status == 0){
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
+                        self.dismiss(animated: true, completion: nil);
+                    });
+                }
+            }else{
+                DispatchQueue.main.async{
+                    showOkAlert(view: self, title: "Fail", msg: result.msg, callback: nil);
+                }
+            }
+        })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

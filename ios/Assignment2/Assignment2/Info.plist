@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key></key>
+	<string></string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>wantAccurateLocation</key>
+		<string>For map</string>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>For map</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>For map</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>For map</string>
 	<key>NSCameraUsageDescription</key>
 	<string>For Upload Dim Sum Photo</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

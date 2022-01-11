@@ -12,6 +12,8 @@ class AccountViewController: UIViewController {
     var account : String = "";
     var password : String = "";
     
+    var accountObj : Account? = nil;
+    
     @IBOutlet weak var lblAc: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
@@ -37,11 +39,16 @@ class AccountViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        getCurrentAccountInfo(handler: self.accountInfoHandler);
+    }
+    
     func accountInfoHandler(result:Account){
         DispatchQueue.main.async{
             self.lblAc.text = "Account: \(result.account)";
             self.lblEmail.text = "Email: \(result.email)";
             self.lblPhone.text = "Phone: \(result.phone)";
+            self.accountObj = result;
         }
     }
     
@@ -85,6 +92,19 @@ class AccountViewController: UIViewController {
     func logout(){
         let keychain = KeychainHelper();
         keychain.clearAccessToken();
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let ac = accountObj else {
+            return;
+        }
+        if let des = segue.destination as? EditAccountViewController {
+            des.prePhone = ac.phone;
+            des.preEmail = ac.email;
+            des.account = ac.account;
+        }else if let des = segue.destination as? ResetPasswordViewController {
+            des.account = ac.account;
+        }
     }
     
     

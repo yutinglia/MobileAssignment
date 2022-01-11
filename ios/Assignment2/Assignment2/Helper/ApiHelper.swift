@@ -103,7 +103,7 @@ func apiGetWithToken<T: Decodable>(path: String, callback cb: @escaping (T?)->()
 } // end apiPostWithToken
 
 // req with token and pass backend result
-func apiBodyReqWithToken<T: Decodable>(apiName: String, method: String, body bodyStr: String, callback cb: @escaping (T?)->()){
+func apiBodyReqWithToken<T: Decodable>(apiName: String, method: String, type: String = "application/x-www-form-urlencoded", body bodyStr: String, callback cb: @escaping (T?)->()){
     let str = "\(BACKEND_SERVER_URL)/api/\(apiName)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed);
     if let url = URL(string: str!){
         var urlReq = URLRequest(url: url)
@@ -120,6 +120,7 @@ func apiBodyReqWithToken<T: Decodable>(apiName: String, method: String, body bod
             return;
         }
         urlReq.setValue(token, forHTTPHeaderField: "Authorization");
+        urlReq.setValue(type, forHTTPHeaderField: "Content-Type");
         let task = URLSession.shared.uploadTask(with: urlReq, from: data, completionHandler: {
             resultData, res, err in
             guard let resultData = resultData else{
