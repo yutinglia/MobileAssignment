@@ -57,9 +57,15 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DimSumCell", for: indexPath);
         let dimSum = self.filteredDimSums[indexPath.row];
-        var cellContent = cell.defaultContentConfiguration();
-        cellContent.text = dimSum.name;
-        cell.contentConfiguration = cellContent;
+        cell.textLabel?.text = dimSum.name;
+        cell.detailTextLabel?.text = "Upload by: \(dimSum.uploader)";
+        if(cell.imageView?.image == nil){
+            cell.imageView?.downloadDimSumImgFromBackend(name: "\(dimSum.name)_\(dimSum.uploader)", handler: {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData();
+                };
+            });
+        }
         return cell;
     }
     
@@ -68,7 +74,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
             guard let index = self.tableView.indexPathForSelectedRow else{
                 return;
             }
-            des.dimSim = filteredDimSums[index.row];
+            des.dimSum = filteredDimSums[index.row];
         }
     }
     
