@@ -49,6 +49,30 @@ class DimSumMapViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManger?.distanceFilter = kCLDistanceFilterNone;
         self.locationManger?.startUpdatingLocation();
         self.coordinate = locationManger?.location?.coordinate;
+        updateStores();
+    }
+    
+    @IBAction func btnReloadClick(_ sender: Any) {
+        updateStores();
+    }
+    
+    func updateStores(){
+        getAllStore(handler: storesHandler);
+        showCurrentLocation();
+    }
+    
+    func storesHandler(result: [Store]){
+        print(result)
+        DispatchQueue.main.async{
+            self.mapView.removeAnnotations(self.mapView.annotations);
+            for store in result {
+                let pointAnnotation = MKPointAnnotation();
+                pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: store.lat, longitude: store.long);
+                pointAnnotation.title = "\(store.name) \(store.address)";
+                pointAnnotation.subtitle = store.intro;
+                self.mapView.addAnnotation(pointAnnotation);
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

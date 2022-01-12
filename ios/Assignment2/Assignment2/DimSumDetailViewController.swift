@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import AVFoundation
 
 class DimSumDetailViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class DimSumDetailViewController: UIViewController {
     @IBOutlet weak var tvHist: UITextView!
     @IBOutlet weak var tvIngr: UITextView!
     @IBOutlet weak var webkitView: WKWebView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,22 @@ class DimSumDetailViewController: UIViewController {
         }
         let req = URLRequest(url: url);
         webkitView.load(req);
+    }
+    
+    func speak(_ string: String, language: String = "en-US"){
+        let utterance = AVSpeechUtterance(string: string);
+        utterance.voice = AVSpeechSynthesisVoice(language: language);
+        utterance.rate = 0.5;
+        let synthesizer = AVSpeechSynthesizer();
+        synthesizer.speak(utterance);
+    }
+    
+    @IBAction func btnInfoSpeakClick(_ sender: Any) {
+        speak(tvInfo.text!);
+    }
+    
+    @IBAction func btnHistSpeakClick(_ sender: Any) {
+        speak(tvHist.text!);
     }
 
 }

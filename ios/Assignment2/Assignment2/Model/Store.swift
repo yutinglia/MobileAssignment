@@ -12,6 +12,7 @@ struct Store : Codable{
     var long: Double;
     var name: String;
     var intro: String;
+    var address: String;
 }
 
 struct AddStoreResult: Codable{
@@ -31,6 +32,18 @@ func addStore(lat: Double,
         guard let result = result else {
             print("???");
             handler(AddStoreResult(status: 1, msg: "Unknow Error"));
+            return;
+        }
+        handler(result);
+    })
+}
+
+func getAllStore(handler: @escaping ([Store]) -> () ){
+    apiGet(path: "store", callback: {
+        (result:[Store]?) in
+        guard let result = result else {
+            print("???");
+            handler([Store]());
             return;
         }
         handler(result);

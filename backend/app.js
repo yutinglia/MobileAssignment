@@ -11,6 +11,7 @@ var dimSumWithTokenRouter = require('./routes/t_dimsum');
 var accountRouter = require('./routes/account');
 var accountWithTokenRouter = require('./routes/t_account');
 var storeWithTokenRouter = require('./routes/t_store');
+var storeRouter = require('./routes/store');
 
 var check_token = require('./check_token');
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth', authRouter);
 app.use('/api/dimsum', dimSumRouter);
 app.use('/api/account', accountRouter);
+app.use('/api/store', storeRouter);
 
 app.use(check_token);
 
