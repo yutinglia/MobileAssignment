@@ -68,8 +68,8 @@ class DimSumMapViewController: UIViewController, CLLocationManagerDelegate {
             for store in result {
                 let pointAnnotation = MKPointAnnotation();
                 pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: store.lat, longitude: store.long);
-                pointAnnotation.title = "\(store.name) \(store.address)";
-                pointAnnotation.subtitle = store.intro;
+                pointAnnotation.title = "name: \(store.name) \naddress: \(store.address)";
+                pointAnnotation.subtitle = "Introduction: \(store.intro)";
                 self.mapView.addAnnotation(pointAnnotation);
             }
         }

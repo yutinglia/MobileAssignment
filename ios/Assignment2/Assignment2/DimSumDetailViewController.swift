@@ -11,7 +11,7 @@ import AVFoundation
 
 class DimSumDetailViewController: UIViewController {
     
-    var dimSim: DimSum? = nil;
+    var dimSum: DimSum? = nil;
     
     @IBOutlet weak var lblDimSum: UILabel!
     @IBOutlet weak var imgView: UIImageView!
@@ -26,16 +26,16 @@ class DimSumDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        guard let dimSim = dimSim else {
+        guard let dimSum = dimSum else {
             print("gg");
             return;
         }
-        lblDimSum.text = dimSim.name;
-        tvInfo.text = dimSim.info;
-        tvHist.text = dimSim.history;
-        tvIngr.text = dimSim.ingredients;
-        imgView.downloadDimSumImgFromBackend(name: "\(dimSim.name)_\(dimSim.uploader)");
-        guard let url = URL(string: "https://www.youtube.com/embed/\(dimSim.tutorial)") else {
+        lblDimSum.text = dimSum.name;
+        tvInfo.text = dimSum.info;
+        tvHist.text = dimSum.history;
+        tvIngr.text = dimSum.ingredients;
+        imgView.downloadDimSumImgFromBackend(name: "\(dimSum.name)_\(dimSum.uploader)");
+        guard let url = URL(string: "https://www.youtube.com/embed/\(dimSum.tutorial)") else {
             print("not url");
             return;
         }
