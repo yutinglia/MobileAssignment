@@ -104,6 +104,10 @@ class AddStoreViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func btnAddClick(_ sender: Any) {
+        if(tfLat.text! == "" || tfLong.text! == "" || tfName.text! == "" || tvIntro.text! == "" || tfAddress.text! == ""){
+            showOkAlert(view: self, title: "Fail", msg: "Please enter all info", callback: nil);
+            return;
+        }
         addStore(lat: Double(tfLat.text!)!, long: Double(tfLong.text!)!, name: tfName.text!, intro: tvIntro.text!, address: tfAddress.text!, handler: {
             result in
             if(result.status == 0){

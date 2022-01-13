@@ -23,6 +23,10 @@ class AddDimSumViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func btnAddClick(_ sender: Any) {
+        if(tfName.text! == "" || tvInfo.text! == "" || tvHist.text! == "" || tvIngr.text! == "" || tvTutor.text! == ""){
+            showOkAlert(view: self, title: "Fail", msg: "Please enter all info", callback: nil);
+            return;
+        }
         addDimSum(name: tfName.text!,
                   info: tvInfo.text!,
                   history: tvHist.text!,

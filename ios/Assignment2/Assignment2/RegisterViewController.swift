@@ -27,6 +27,10 @@ class RegisterViewController: UIViewController {
         let phone = tfPhone.text!;
         let pwd = tfPassword.text!;
         let cpwd = tfConfPassword.text!;
+        if(ac == "" || email == "" || phone == "" || pwd == "" || cpwd == ""){
+            showOkAlert(view: self, title: "Oops", msg: "Please enter all info", callback: nil);
+            return;
+        }
         if(pwd != cpwd){
             showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
             return;

@@ -8,4 +8,5 @@
 import Foundation
 
 // local network
-let BACKEND_SERVER_URL = "http://localhost:3000"; // "http://192.168.1.238";
+let BACKEND_SERVER_URL = "http://192.168.1.238";
+// "http://localhost:3000"; // "http://192.168.1.238"

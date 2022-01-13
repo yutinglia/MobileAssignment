@@ -21,22 +21,46 @@ class Assignment2UITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testRegisterAndLogin(){
+        let ac = arc4random();
+        let pwd = arc4random();
+        
+        let app = XCUIApplication();
+        
+        app.tabBars["Tab Bar"].buttons["Account"].tap()
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Register"]/*[[".buttons[\"Register\"].staticTexts[\"Register\"]",".staticTexts[\"Register\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        app.textFields["account ( username )"].tap()
+        app.textFields["account ( username )"].typeText("\(ac)")
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.textFields["email"].tap()
+        app.textFields["email"].typeText("\(ac) email")
+
+        app.textFields["phone"].tap()
+        app.textFields["phone"].typeText("\(ac) phone")
+
+        app.secureTextFields["password"].tap()
+        app.secureTextFields["password"].typeText("\(pwd)")
+        
+        app.secureTextFields["confirm password"].tap()
+        app.secureTextFields["confirm password"].typeText("\(pwd)")
+        
+        app.buttons["Register"].staticTexts["Register"].tap()
+        
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+
+        app.textFields["Account ( Username )"].tap()
+        app.textFields["Account ( Username )"].typeText("\(ac)")
+
+        app.secureTextFields["Password"].tap()
+        app.secureTextFields["Password"].typeText("\(pwd)")
+        
+        app/*@START_MENU_TOKEN@*/.staticTexts["Login"]/*[[".buttons[\"Login\"].staticTexts[\"Login\"]",".staticTexts[\"Login\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
     }
+    
+    
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
