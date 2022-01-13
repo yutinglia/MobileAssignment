@@ -20,21 +20,26 @@ class ResetPasswordViewController: UIViewController {
     }
     
     @IBAction func btnConfirmClick(_ sender: Any) {
-        if(tfNewPwd.text! != tfConfNewPwd.text!){
-            showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
+        // check user input
+        if(tfNewPwd.text! == "" || tfConfNewPwd.text! == "" || tfOldPwd.text! == ""){
+            AlertHelper.showOkAlert(view: self, title: "Fail", msg: "Please enter all info", onOkClick: nil);
             return;
         }
-        resetPassword(ac: account, pwd: tfNewPwd.text!, opwd: tfOldPwd.text!, handler: {
+        if(tfNewPwd.text! != tfConfNewPwd.text!){
+            AlertHelper.showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", onOkClick: nil);
+            return;
+        }
+        Accounts.resetPassword(ac: account, pwd: tfNewPwd.text!, opwd: tfOldPwd.text!, handler: {
             result in
             if(result.status == 0){
                 DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
+                    AlertHelper.showOkAlert(view: self, title: "Success", msg: result.msg, onOkClick: {
                         self.dismiss(animated: true, completion: nil);
                     });
                 }
             }else{
                 DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Fail", msg: result.msg, callback: nil);
+                    AlertHelper.showOkAlert(view: self, title: "Fail", msg: result.msg, onOkClick: nil);
                 }
             }
         })

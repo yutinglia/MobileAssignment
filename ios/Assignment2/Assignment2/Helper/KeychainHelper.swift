@@ -9,9 +9,11 @@ import Foundation
 
 class KeychainHelper{
     
-    let ATTR_LABEL = "AccessToken";
+    // keychain label
+    private static let ATTR_LABEL = "AccessToken";
     
-    func isAccessTokenExist() -> Bool{
+    // check token in keychain
+    public static func isAccessTokenExist() -> Bool{
         let token = retrieveAccessToken();
         if token != nil {
             return true;
@@ -19,7 +21,8 @@ class KeychainHelper{
         return false;
     }
     
-    func clearAccessToken(){
+    // for logout
+    public static func clearAccessToken(){
         let token = retrieveAccessToken();
         if token != nil {
             print("clear token");
@@ -27,7 +30,8 @@ class KeychainHelper{
         }
     }
     
-    func saveAccessToken(loginInfo: LoginInfo) -> Bool{
+    // login
+    public static func saveAccessToken(loginInfo: LoginInfo) -> Bool{
         let oldToken = retrieveAccessTokenWithoutProcess();
         if oldToken != nil {
             print("update token");
@@ -38,7 +42,8 @@ class KeychainHelper{
         }
     }
     
-    func firstAccessToken(loginInfo: LoginInfo) -> Bool{
+    // if keychain not created
+    private static func firstAccessToken(loginInfo: LoginInfo) -> Bool{
         let query: [String: Any] =
             [
                 kSecClass as String: kSecClassGenericPassword,
@@ -54,7 +59,8 @@ class KeychainHelper{
         return true;
     }
     
-    func retrieveAccessTokenWithoutProcess() -> String?{
+    // get token without process nil
+    private static func retrieveAccessTokenWithoutProcess() -> String?{
         let query: [String: Any] =
             [
                 kSecClass as String: kSecClassGenericPassword,
@@ -68,7 +74,8 @@ class KeychainHelper{
         return String(data: data, encoding: .utf8);
     }
     
-    func retrieveAccessToken() -> String?{
+    // process nil
+    public static func retrieveAccessToken() -> String?{
         let t = retrieveAccessTokenWithoutProcess();
         // 0 = invalid token, meaning login fail or logouted
         if(t == "0"){
@@ -77,7 +84,8 @@ class KeychainHelper{
         return t;
     }
     
-    func updateAccessToken(loginInfo: LoginInfo) -> Bool{
+    // if keychain created then update keychain
+    private static func updateAccessToken(loginInfo: LoginInfo) -> Bool{
         let query: [String: Any] =
             [
                 kSecClass as String: kSecClassGenericPassword,
@@ -97,7 +105,7 @@ class KeychainHelper{
     }
     
     // for test
-    func deleteAccessToken(loginInfo: LoginInfo) -> Bool{
+    private static func deleteAccessToken(loginInfo: LoginInfo) -> Bool{
         let query: [String: Any] =
             [
                 kSecClass as String: kSecClassGenericPassword,

@@ -21,8 +21,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let keychain = KeychainHelper();
-        if (keychain.isAccessTokenExist()){
+        if (KeychainHelper.isAccessTokenExist()){
             print("logined");
             DispatchQueue.main.async{
                 let sb = UIStoryboard(name: "Main", bundle: nil);
@@ -32,6 +31,7 @@ class LoginViewController: UIViewController {
         }
     }
 
+    // try login
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let des = segue.destination as? AccountViewController {
             print("login prepare");

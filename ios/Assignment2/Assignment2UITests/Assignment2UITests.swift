@@ -23,6 +23,7 @@ class Assignment2UITests: XCTestCase {
     }
     
     func testRegisterAndLogin(){
+        
         let ac = arc4random();
         let pwd = arc4random();
         
@@ -60,7 +61,5 @@ class Assignment2UITests: XCTestCase {
         app/*@START_MENU_TOKEN@*/.staticTexts["Login"]/*[[".buttons[\"Login\"].staticTexts[\"Login\"]",".staticTexts[\"Login\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
     }
-    
-    
 
 }

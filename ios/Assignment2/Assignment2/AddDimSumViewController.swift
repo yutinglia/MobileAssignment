@@ -23,30 +23,33 @@ class AddDimSumViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func btnAddClick(_ sender: Any) {
+        // check user input
         if(tfName.text! == "" || tvInfo.text! == "" || tvHist.text! == "" || tvIngr.text! == "" || tvTutor.text! == ""){
-            showOkAlert(view: self, title: "Fail", msg: "Please enter all info", callback: nil);
+            AlertHelper.showOkAlert(view: self, title: "Fail", msg: "Please enter all info", onOkClick: nil);
             return;
         }
-        addDimSum(name: tfName.text!,
-                  info: tvInfo.text!,
-                  history: tvHist.text!,
-                  ingredients: tvIngr.text!,
-                  tutorial: tvTutor.text!,
-                  img: (imgView.image?.jpegData(compressionQuality: 0.8))!, handler: {
-            result in
-            if(result.status == 0){
-                DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
-                        self.dismiss(animated: true, completion: nil);
-                    });
-                }
-            }else{
-                DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Fail", msg: result.msg, callback: nil);
+        DimSums.addDimSum(
+            name: tfName.text!,
+            info: tvInfo.text!,
+            history: tvHist.text!,
+            ingredients: tvIngr.text!,
+            tutorial: tvTutor.text!,
+            img: (imgView.image?.jpegData(compressionQuality: 0.8))!, handler: {
+                result in
+                if(result.status == 0){
+                    DispatchQueue.main.async{
+                        AlertHelper.showOkAlert(view: self, title: "Success", msg: result.msg, onOkClick: {
+                            self.dismiss(animated: true, completion: nil);
+                        });
+                    }
+                }else{
+                    DispatchQueue.main.async{
+                        AlertHelper.showOkAlert(view: self, title: "Fail", msg: result.msg, onOkClick: nil);
+                    }
                 }
             }
-        })
-    }
+        )// end DimSums.addDimSum
+    }// end btnAddClick
     
     @IBAction func btnCancelClick(_ sender: Any) {
         self.dismiss(animated: true, completion: nil);

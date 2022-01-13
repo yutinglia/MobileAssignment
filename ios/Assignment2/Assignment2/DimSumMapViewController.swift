@@ -57,12 +57,12 @@ class DimSumMapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateStores(){
-        getAllStore(handler: storesHandler);
+        Stores.getAllStore(handler: storesHandler);
         showCurrentLocation();
     }
     
+    // show all stores on map
     func storesHandler(result: [Store]){
-        print(result)
         DispatchQueue.main.async{
             self.mapView.removeAnnotations(self.mapView.annotations);
             for store in result {

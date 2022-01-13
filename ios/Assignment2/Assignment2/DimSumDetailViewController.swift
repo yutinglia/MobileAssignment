@@ -27,7 +27,7 @@ class DimSumDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         guard let dimSum = dimSum else {
-            print("gg");
+            print("no dim sum obj");
             return;
         }
         lblDimSum.text = dimSum.name;
@@ -43,6 +43,7 @@ class DimSumDetailViewController: UIViewController {
         webkitView.load(req);
     }
     
+    // text to speak
     func speak(_ string: String, language: String = "en-US"){
         let utterance = AVSpeechUtterance(string: string);
         utterance.voice = AVSpeechSynthesisVoice(language: language);

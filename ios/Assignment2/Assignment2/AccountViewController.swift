@@ -20,27 +20,26 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let keychain = KeychainHelper();
-        if(!keychain.isAccessTokenExist()){
+        if(!KeychainHelper.isAccessTokenExist()){
             // login
-            getLoginInfo(account: account, password: password, handler: loginInfoHandler);
+            LoginManager.login(account: account, password: password, handler: loginInfoHandler);
         }else{
-            verifyTokenAndRefreshToken(handler: {
+            LoginManager.verifyAndRefreshToken(handler: {
                 (result:LoginInfo) in
                 if(result.token == "0"){
-                    showOkAlert(view: self, title: "Expired", msg: "Login has expird, please login again.", callback: {
+                    AlertHelper.showOkAlert(view: self, title: "Expired", msg: "Login has expird, please login again.", onOkClick: {
                         self.navigationController?.popViewController(animated: true);
                     });
                 }else{
                     self.password = "";
-                    getCurrentAccountInfo(handler: self.accountInfoHandler);
+                    Accounts.getCurrentAccountInfo(handler: self.accountInfoHandler);
                 }
             })
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getCurrentAccountInfo(handler: self.accountInfoHandler);
+        Accounts.getCurrentAccountInfo(handler: self.accountInfoHandler);
     }
     
     func accountInfoHandler(result:Account){
@@ -56,31 +55,27 @@ class AccountViewController: UIViewController {
         if(result.token == "0"){
             // login fail
             DispatchQueue.main.async{
-                showOkAlert(view: self, title: "Login Error", msg: "Login Fail", callback: {
+                AlertHelper.showOkAlert(view: self, title: "Login Error", msg: "Login Fail", onOkClick: {
                     self.navigationController?.popViewController(animated: true);
                 });
             }
         }else{
             // login ok
             self.password = "";
-            let keychain = KeychainHelper();
-            if(keychain.saveAccessToken(loginInfo: result)){
-                // let token = keychain.retrieveAccessToken(account: result.account);
-                // guard let token = token else {print("retrieve token fail"); return;}
-                // print(token);
+            if(KeychainHelper.saveAccessToken(loginInfo: result)){
                 DispatchQueue.main.async{
                     self.navigationItem.setHidesBackButton(true, animated: true);
                 }
             }else{
                 print("stored token fail");
                 DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Login Error", msg: "Stored Access Token Fail", callback: {
+                    AlertHelper.showOkAlert(view: self, title: "Login Error", msg: "Stored Access Token Fail", onOkClick: {
                         self.logout();
                         self.navigationController?.popViewController(animated: true);
                     });
                 }
             }
-            getCurrentAccountInfo(handler: self.accountInfoHandler);
+            Accounts.getCurrentAccountInfo(handler: self.accountInfoHandler);
         }
     }
     
@@ -90,10 +85,9 @@ class AccountViewController: UIViewController {
     }
     
     func logout(){
-        let keychain = KeychainHelper();
-        keychain.clearAccessToken();
+        KeychainHelper.clearAccessToken();
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let ac = accountObj else {
             return;

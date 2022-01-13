@@ -27,29 +27,30 @@ class RegisterViewController: UIViewController {
         let phone = tfPhone.text!;
         let pwd = tfPassword.text!;
         let cpwd = tfConfPassword.text!;
+        // check user input
         if(ac == "" || email == "" || phone == "" || pwd == "" || cpwd == ""){
-            showOkAlert(view: self, title: "Oops", msg: "Please enter all info", callback: nil);
+            AlertHelper.showOkAlert(view: self, title: "Oops", msg: "Please enter all info", onOkClick: nil);
             return;
         }
         if(pwd != cpwd){
-            showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", callback: nil);
+            AlertHelper.showOkAlert(view: self, title: "Oops", msg: "Confirm password is incorrect", onOkClick: nil);
             return;
         }
-        createAccount(ac: ac, pwd: pwd, email: email, phone: phone, handler: registerResultHandler);
+        Accounts.createAccount(ac: ac, pwd: pwd, email: email, phone: phone, handler: registerResultHandler);
     }
     
     func registerResultHandler(result: RegisterResult){
         if(result.status == 0){
             // register success
             DispatchQueue.main.async{
-                showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
+                AlertHelper.showOkAlert(view: self, title: "Success", msg: result.msg, onOkClick: {
                     self.navigationController?.popViewController(animated: true);
                 });
             }
         }else{
             // fail
             DispatchQueue.main.async{
-                showOkAlert(view: self, title: "Oops", msg: result.msg, callback: nil);
+                AlertHelper.showOkAlert(view: self, title: "Oops", msg: result.msg, onOkClick: nil);
             }
         }
     }

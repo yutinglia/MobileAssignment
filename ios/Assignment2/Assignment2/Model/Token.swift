@@ -13,8 +13,13 @@ struct LoginInfo : Codable{
 }
 
 class LoginManager{
-    static func login(account:String, password:String,
-                      handler: @escaping (LoginInfo) -> () ){
+    
+    public static func login(
+        account:String,
+        password:String,
+        handler: @escaping (LoginInfo) -> () ){
+            
+        // salt
         var hash = "LOL" + account + "HAHA" + password;
         hash = hash.sha256;
         let body = "ac=\(account)&pwd=\(hash)";
@@ -29,7 +34,8 @@ class LoginManager{
         });
     }
 
-    static func verifyTokenAndRefreshToken(handler: @escaping (LoginInfo) -> () = {_ in} ){
+    // check token and get new token ( token will expired after 1 day )
+    public static func verifyAndRefreshToken(handler: @escaping (LoginInfo) -> () ){
         ApiHelper.apiGetWithToken(path: "auth", callback: {
             (result:LoginInfo?) in
             guard let result = result else {
@@ -37,8 +43,10 @@ class LoginManager{
                 handler(LoginInfo(account: "0", token: "0"));
                 return;
             }
+            // update token
             _ = KeychainHelper.saveAccessToken(loginInfo: result);
             handler(result);
         })
     }
+    
 }

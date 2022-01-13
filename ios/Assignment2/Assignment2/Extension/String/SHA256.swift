@@ -9,6 +9,7 @@ import Foundation
 import CommonCrypto
 
 extension String {
+    // for password encryption
     var sha256: String {
         let utf8 = cString(using: .utf8);
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH));

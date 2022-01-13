@@ -20,32 +20,38 @@ struct AddStoreResult: Codable{
     var msg: String;
 }
 
-func addStore(lat: Double,
-              long: Double,
-              name: String,
-              intro: String,
-              address: String,
-              handler: @escaping (AddStoreResult) -> () ){
-    let body = "lat=\(lat)&long=\(long)&name=\(name)&intro=\(intro)&address=\(address)";
-    apiPostWithToken(apiName: "user/store", body: body, callback: {
-        (result:AddStoreResult?) in
-        guard let result = result else {
-            print("???");
-            handler(AddStoreResult(status: 1, msg: "Unknow Error"));
-            return;
-        }
-        handler(result);
-    })
-}
+class Stores{
+    
+    public static func addStore(
+        lat: Double,
+        long: Double,
+        name: String,
+        intro: String,
+        address: String,
+        handler: @escaping (AddStoreResult) -> () ){
+            
+        let body = "lat=\(lat)&long=\(long)&name=\(name)&intro=\(intro)&address=\(address)";
+        ApiHelper.apiPostWithToken(path: "user/store", body: body, callback: {
+            (result:AddStoreResult?) in
+            guard let result = result else {
+                print("???");
+                handler(AddStoreResult(status: 1, msg: "Unknow Error"));
+                return;
+            }
+            handler(result);
+        })
+    }
 
-func getAllStore(handler: @escaping ([Store]) -> () ){
-    apiGet(path: "store", callback: {
-        (result:[Store]?) in
-        guard let result = result else {
-            print("???");
-            handler([Store]());
-            return;
-        }
-        handler(result);
-    })
+    public static func getAllStore(handler: @escaping ([Store]) -> () ){
+        ApiHelper.apiGet(path: "store", callback: {
+            (result:[Store]?) in
+            guard let result = result else {
+                print("???");
+                handler([Store]());
+                return;
+            }
+            handler(result);
+        })
+    }
+
 }

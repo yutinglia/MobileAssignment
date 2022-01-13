@@ -21,39 +21,46 @@ struct AddDimSumResult: Codable{
     var msg: String;
 }
 
-func getAllDimSum(handler: @escaping ([DimSum]) -> () ){
-    apiGet(path: "dimsum", callback: {
-        (result:[DimSum]?) in
-        guard let result = result else {
-            print("???");
-            handler([DimSum]());
-            return;
-        }
-        handler(result);
-    })
-}
+class DimSums{
+    public static func getAllDimSum(handler: @escaping ([DimSum]) -> () ){
+        ApiHelper.apiGet(path: "dimsum", callback: {
+            (result:[DimSum]?) in
+            guard let result = result else {
+                print("???");
+                handler([DimSum]());
+                return;
+            }
+            handler(result);
+        })
+    }
 
-func addDimSum(name: String,
-               info:String,
-               history:String,
-               ingredients:String,
-               tutorial: String,
-               img: Data,
-               handler: @escaping (AddDimSumResult) -> () ){
-    apiPostFormDataWithToken(apiName: "user/dimsum",
-                             parameters: ["name":name,
-                                          "info":info,
-                                          "history":history,
-                                          "tutorial":tutorial,
-                                          "ingredients":ingredients],
-                             data: ["img": img],
-                             callback: {
-        (result:AddDimSumResult?) in
-        guard let result = result else {
-            print("???");
-            handler(AddDimSumResult(status: 1, msg: "Unknow Error"));
-            return;
-        }
-        handler(result);
-    })
+    public static func addDimSum(
+        name: String,
+        info:String,
+        history:String,
+        ingredients:String,
+        tutorial: String,
+        img: Data,
+        handler: @escaping (AddDimSumResult) -> () ){
+            
+        ApiHelper.apiPostFormDataWithToken(
+            path: "user/dimsum",
+            parameters: ["name":name,
+                         "info":info,
+                         "history":history,
+                         "tutorial":tutorial,
+                         "ingredients":ingredients],
+            data: ["img": img],
+            callback: {
+                (result:AddDimSumResult?) in
+                guard let result = result else {
+                    print("???");
+                    handler(AddDimSumResult(status: 1, msg: "Unknow Error"));
+                    return;
+                }
+                handler(result);
+            }
+        );
+    }// end addDimSum
+
 }

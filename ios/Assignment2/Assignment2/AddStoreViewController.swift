@@ -24,6 +24,7 @@ class AddStoreViewController: UIViewController, CLLocationManagerDelegate {
     var long: Double = 0.0;
     
     var coordinate: CLLocationCoordinate2D? = nil;
+    // Annotation for show user selected location
     var pointAnnotation: MKPointAnnotation = MKPointAnnotation();
     
     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01);
@@ -83,6 +84,7 @@ class AddStoreViewController: UIViewController, CLLocationManagerDelegate {
         self.mapView?.setRegion(region, animated: true);
     }
     
+    // when user click the map, get clicked location and show annotation
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let touchPoint = touch.location(in: mapView);
@@ -97,6 +99,7 @@ class AddStoreViewController: UIViewController, CLLocationManagerDelegate {
         showCurrentLocation();
     }
     
+    // get location from GPS
     @IBAction func btnGPSClick(_ sender: Any) {
         tfLat.text = "\(lat)";
         tfLong.text = "\(long)";
@@ -104,21 +107,22 @@ class AddStoreViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func btnAddClick(_ sender: Any) {
+        // check user input
         if(tfLat.text! == "" || tfLong.text! == "" || tfName.text! == "" || tvIntro.text! == "" || tfAddress.text! == ""){
-            showOkAlert(view: self, title: "Fail", msg: "Please enter all info", callback: nil);
+            AlertHelper.showOkAlert(view: self, title: "Fail", msg: "Please enter all info", onOkClick: nil);
             return;
         }
-        addStore(lat: Double(tfLat.text!)!, long: Double(tfLong.text!)!, name: tfName.text!, intro: tvIntro.text!, address: tfAddress.text!, handler: {
+        Stores.addStore(lat: Double(tfLat.text!)!, long: Double(tfLong.text!)!, name: tfName.text!, intro: tvIntro.text!, address: tfAddress.text!, handler: {
             result in
             if(result.status == 0){
                 DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Success", msg: result.msg, callback: {
+                    AlertHelper.showOkAlert(view: self, title: "Success", msg: result.msg, onOkClick: {
                         self.dismiss(animated: true, completion: nil);
                     });
                 }
             }else{
                 DispatchQueue.main.async{
-                    showOkAlert(view: self, title: "Fail", msg: result.msg, callback: nil);
+                    AlertHelper.showOkAlert(view: self, title: "Fail", msg: result.msg, onOkClick: nil);
                 }
             }
         })

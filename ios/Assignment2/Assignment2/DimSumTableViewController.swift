@@ -23,10 +23,12 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // pull reload
         self.tableView.refreshControl?.addTarget(self, action: #selector(self.refreshData(_:)), for: .valueChanged);
         refreshData(self);
-        // listen textfield change
+        // listen textfield change for search
         tfSearch.addTarget(self, action: #selector(tfSearchDidChange(_:)), for: .editingChanged);
+        initSpeak();
     }
     
     func initSpeak(){
@@ -43,7 +45,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
     }
     
     @objc func refreshData(_ sender: AnyObject){
-        getAllDimSum(handler: dimSumsHandler);
+        DimSums.getAllDimSum(handler: dimSumsHandler);
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,6 +61,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
         let dimSum = self.filteredDimSums[indexPath.row];
         cell.textLabel?.text = dimSum.name;
         cell.detailTextLabel?.text = "Upload by: \(dimSum.uploader)";
+        // download image
         if(cell.imageView?.image == nil){
             cell.imageView?.downloadDimSumImgFromBackend(name: "\(dimSum.name)_\(dimSum.uploader)", handler: {
                 DispatchQueue.main.async {
@@ -88,6 +91,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
         };
     }
     
+    // search
     @objc func tfSearchDidChange(_ tf: UITextField){
         filteredDimSums = tfSearch.text == "" ? dimSums : dimSums.filter({
             dimSum in
@@ -105,6 +109,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
                 tfSearch.text = "";
             }
             let audioSession = AVAudioSession.sharedInstance();
+            // reset audio to playback mode
             do {
                 try audioSession.setCategory(AVAudioSession.Category.playback);
                 try audioSession.setActive(false, options: .notifyOthersOnDeactivation);
@@ -123,13 +128,14 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
             recognitionTask = nil;
         }
         
+        // set audio mode to record
         let audioSession = AVAudioSession.sharedInstance();
         do {
             try audioSession.setCategory(AVAudioSession.Category.record);
             try audioSession.setMode(AVAudioSession.Mode.measurement);
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation);
         } catch {
-            print("audio error");
+            print("set audio mode error");
         }
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest();
@@ -140,7 +146,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
             print("audio engine error");
             return
         }
-
+        
         recognitionRequest.shouldReportPartialResults = true;
         
         recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: {
@@ -175,7 +181,7 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
         do{
             try audioEngine.start();
         }catch{
-            print("audio engine error 2");
+            print("audio engine error");
         }
         
         tfSearch.text = "Listening...";
