@@ -6,30 +6,58 @@
 //
 
 import XCTest
+@testable import Assignment2
+
+struct TestDecodable: Codable{
+    var v1: String;
+    var v2: String;
+}
 
 class ApiHelperTests: XCTestCase {
-
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testMakeURL(){
+        ApiHelper.apiGet(path: "test", callback: )
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+}
+
+class MockURLProtocol: URLProtocol{
+    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data?))?
+    
+    override class func canInit(with request: URLRequest) -> Bool {
+        
+    }
+    
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+        
+    }
+    
+    override func startLoading() {
+        guard let handler = MockURLProtocol.requestHandler else{
+            fatalError("No Handler")
+        }
+        
+        do {
+            let (res, data) = try handler(request)
+            client?.urlProtocol(self, didReceive: res, cacheStoragePolicy: .notAllowed)
+            if let data = data {
+                client?.urlProtocol(self, didLoad: data)
+            }
+            client?.urlProtocolDidFinishLoading(self)
+        }catch{
+            client?.urlProtocol(self, didFailWithError: error)
         }
     }
-
+    
+    override func stopLoading() {
+        
+    }
 }

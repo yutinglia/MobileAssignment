@@ -22,6 +22,7 @@
 		C4584C24278C9B1D0056FF02 /* DimSumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */; };
 		C4584C27278CC1080056FF02 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4584C26278CC1080056FF02 /* Download.swift */; };
 		C45900E82789C7DF0080E98A /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45900E72789C7DF0080E98A /* KeychainHelper.swift */; };
+		C45A36142790EDC200870883 /* ApiHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45A36132790EDC200870883 /* ApiHelperTests.swift */; };
 		C46D8FAD278B8A7E00B12289 /* AddDimSumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */; };
 		C46D8FB0278BA76100B12289 /* AppendString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D8FAF278BA76100B12289 /* AppendString.swift */; };
 		C476686F2788D97F00338B63 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476686E2788D97F00338B63 /* RegisterViewController.swift */; };
@@ -77,6 +78,7 @@
 		C4584C23278C9B1D0056FF02 /* DimSumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimSumDetailViewController.swift; sourceTree = "<group>"; };
 		C4584C26278CC1080056FF02 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		C45900E72789C7DF0080E98A /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		C45A36132790EDC200870883 /* ApiHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelperTests.swift; sourceTree = "<group>"; };
 		C46D8FAC278B8A7E00B12289 /* AddDimSumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDimSumViewController.swift; sourceTree = "<group>"; };
 		C46D8FAF278BA76100B12289 /* AppendString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendString.swift; sourceTree = "<group>"; };
 		C476686E2788D97F00338B63 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		C434DE6E278245B7003F8B4B /* Assignment2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C45A36132790EDC200870883 /* ApiHelperTests.swift */,
 				C434DE6F278245B7003F8B4B /* Assignment2Tests.swift */,
 			);
 			path = Assignment2Tests;
@@ -404,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C45A36142790EDC200870883 /* ApiHelperTests.swift in Sources */,
 				C434DE70278245B7003F8B4B /* Assignment2Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
