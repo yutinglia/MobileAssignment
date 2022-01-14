@@ -23,41 +23,11 @@ class ApiHelperTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testMakeURL(){
-        ApiHelper.apiGet(path: "test", callback: )
+    func testApiGet(){
+        ApiHelper.apiGet(path: "dimSum", callback: {
+            (result:[DimSum]?) in
+            XCTAssertNil(result);
+        })
     }
 
-}
-
-class MockURLProtocol: URLProtocol{
-    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data?))?
-    
-    override class func canInit(with request: URLRequest) -> Bool {
-        
-    }
-    
-    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        
-    }
-    
-    override func startLoading() {
-        guard let handler = MockURLProtocol.requestHandler else{
-            fatalError("No Handler")
-        }
-        
-        do {
-            let (res, data) = try handler(request)
-            client?.urlProtocol(self, didReceive: res, cacheStoragePolicy: .notAllowed)
-            if let data = data {
-                client?.urlProtocol(self, didLoad: data)
-            }
-            client?.urlProtocolDidFinishLoading(self)
-        }catch{
-            client?.urlProtocol(self, didFailWithError: error)
-        }
-    }
-    
-    override func stopLoading() {
-        
-    }
 }
