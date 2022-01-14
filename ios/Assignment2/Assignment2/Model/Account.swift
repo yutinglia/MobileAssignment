@@ -50,7 +50,7 @@ class Accounts{
         phone:String,
         handler: @escaping (RegisterResult) -> () ){
             
-        // add some salt
+        // add some salt and hashed
         var hash = "LOL" + ac + "HAHA" + pwd;
         hash = hash.sha256;
         let body = "ac=\(ac)&pwd=\(hash)&email=\(email)&phone=\(phone)";
@@ -88,10 +88,10 @@ class Accounts{
         opwd:String,
         handler: @escaping (ResetPasswordResult) -> () ){
         
-        // add some salt
+        // add some salt and hashed
         var hash = "LOL" + ac + "HAHA" + pwd;
         hash = hash.sha256;
-        // add some salt
+        // add some salt and hashed
         var ohash = "LOL" + ac + "HAHA" + opwd;
         ohash = ohash.sha256;
         let body = "pwd=\(hash)&opwd=\(ohash)";
