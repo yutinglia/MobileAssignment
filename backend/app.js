@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+// connect db
 mongoose.connect('mongodb://localhost:27017/dim_sum_app_db').then(console.log("db ok")).catch(err => console.log(err));
 
 var authRouter = require('./routes/auth');
@@ -23,9 +24,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// login
 app.use('/api/auth', authRouter);
+// get all dimsum
 app.use('/api/dimsum', dimSumRouter);
+// register
 app.use('/api/account', accountRouter);
+// get all store
 app.use('/api/store', storeRouter);
 
 // ## following need access token ( login ) ##
