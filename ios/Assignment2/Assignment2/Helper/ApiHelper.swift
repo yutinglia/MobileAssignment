@@ -147,6 +147,7 @@ class ApiHelper{
         var body = Data();
         
         // make form data
+        // https://medium.com/@jerrywang0420/urlsession-%E6%95%99%E5%AD%B8-swift-3-ios-part-3-34699564fb12
         urlReq.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type");
         
         // add all para in body

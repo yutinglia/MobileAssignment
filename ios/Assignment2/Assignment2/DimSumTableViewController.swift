@@ -123,6 +123,8 @@ class DimSumTableViewController: UITableViewController, SFSpeechRecognizerDelega
     }
     
     func startRecording(){
+        // https://www.appcoda.com.tw/siri-speech-framework/
+        
         if(recognitionTask != nil){
             recognitionTask?.cancel();
             recognitionTask = nil;
