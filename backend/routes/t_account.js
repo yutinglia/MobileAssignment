@@ -3,6 +3,7 @@ const Account = require('../model/Account');
 var router = express.Router();
 var crypto = require('crypto');
 
+// get account info
 router.get('/', async function (req, res, next) {
     try {
         const account = await Account.findOne({ account: req.auth.decoded.ac });
@@ -13,6 +14,7 @@ router.get('/', async function (req, res, next) {
     }
 });
 
+// edit account info
 router.put('/info', async function (req, res, next) {
     try {
         const { email, phone } = req.body;
@@ -28,6 +30,7 @@ router.put('/info', async function (req, res, next) {
     }
 });
 
+// reset password
 router.put('/pwd', async function (req, res, next) {
     try {
         const { pwd, opwd } = req.body;

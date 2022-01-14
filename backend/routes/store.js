@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Store = require('../model/Store')
 
+// get all store
 router.get('/', async function (req, res, next) {
     try {
         const stores = await Store.find();

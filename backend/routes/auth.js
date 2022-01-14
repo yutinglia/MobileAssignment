@@ -14,6 +14,7 @@ router.get('/', async function (req, res, next) {
       res.status(500).send("oof");
       return;
     }
+    // check token
     jwt.verify(token, config.JWT_SECRET_KEY, function (err, decoded) {
       if (err) {
         res.json({
@@ -36,7 +37,7 @@ router.get('/', async function (req, res, next) {
   }
 });
 
-// get access token
+// get access token ( login )
 router.post('/', async function (req, res, next) {
   try {
     const { ac, pwd } = req.body;
@@ -47,6 +48,7 @@ router.post('/', async function (req, res, next) {
       res.json({ account: "0", token: "0" });
     } else {
       const uuid = uuidv4();
+      // new token
       const token = jwt.sign({ ac, uuid }, config.JWT_SECRET_KEY, { expiresIn: config.JWT_EXPIRES_TIME });
       res.json({
         account: ac,
