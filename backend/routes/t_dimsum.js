@@ -3,6 +3,7 @@ var router = express.Router();
 const DimSum = require('../model/DimSum')
 const multer = require('multer')
 
+// handle file upload
 var upload = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
@@ -15,6 +16,7 @@ var upload = multer({
     })
 })
 
+// add dimsum
 router.post('/', upload.single('img'), async function (req, res, next) {
     try {
         const { ac: uploader } = req.auth.decoded;

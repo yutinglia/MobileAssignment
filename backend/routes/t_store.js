@@ -3,6 +3,7 @@ var router = express.Router();
 var crypto = require('crypto');
 const Store = require('../model/Store');
 
+// add store
 router.post('/', async function (req, res, next) {
     try {
         const { lat, long, name, intro, address } = req.body;
