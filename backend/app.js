@@ -28,10 +28,13 @@ app.use('/api/dimsum', dimSumRouter);
 app.use('/api/account', accountRouter);
 app.use('/api/store', storeRouter);
 
+// ## following need access token ( login ) ##
 app.use(check_token);
-
+// add dimsum
 app.use('/api/user/dimsum', dimSumWithTokenRouter);
+// edit account / reset password
 app.use('/api/user/account', accountWithTokenRouter);
+// add store
 app.use('/api/user/store', storeWithTokenRouter);
 
 module.exports = app;
